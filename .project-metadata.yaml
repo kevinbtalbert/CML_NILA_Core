@@ -22,6 +22,10 @@ environment_variables:
     default: "cml-default"
     description: "Set value according to your Pinecone environment."
     required: true
+  OPENAI_API_KEY:
+    default: "changeme"
+    description: "Set value according to your OpenAI API Key."
+    required: true
 
 runtimes:
   - editor: JupyterLab ## Other acceptable values are determined by the runtimes available in your CML environment

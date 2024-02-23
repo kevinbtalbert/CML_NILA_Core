@@ -1,0 +1,14 @@
+beautifulsoup4==4.12.2
+bs4==0.0.1
+certifi==2023.7.22
+configparser==6.0.0
+requests==2.31.0
+urllib3==2.0.4
+langchain==0.1.5
+pypdf==3.16.1
+pinecone-client==2.2.4
+tiktoken==0.5.2
+langchain-community==0.0.17
+langchain-core==0.1.18
+langchain-openai==0.0.5
+sentence_transformers

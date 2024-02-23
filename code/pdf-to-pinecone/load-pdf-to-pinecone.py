@@ -31,7 +31,7 @@ if index_name not in existing_indexes:
 index = pinecone.Index(index_name)
 
 # Define the path to your documents folder
-folder_path = '/home/cdsw/docs'
+folder_path = '/home/cdsw/data/PDF'
 
 # List all PDF files in the folder
 pdf_files = [file for file in os.listdir(folder_path) if file.endswith('.pdf')]
@@ -45,10 +45,3 @@ for pdf_file in pdf_files:
     docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
     print("Loaded PDF document " + pdf_file + " successfully to Pinecone index " + index_name)
     
-#     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-#     texts = text_splitter.split_documents(data)
-#     embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
-#     docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
-
-
-

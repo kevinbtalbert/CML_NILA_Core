@@ -9,12 +9,12 @@ VECTOR_DB = os.getenv('VECTOR_DB').upper()
 PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
 PINECONE_ENVIRONMENT = os.getenv('PINECONE_ENVIRONMENT')
 PINECONE_INDEX = os.getenv('PINECONE_INDEX')
-dimension = 768
+dimension = 1536
 
 def create_pinecone_collection(PINECONE_INDEX):
     try:
-        print(f"Creating 768-dimensional index called '{PINECONE_INDEX}'...")
-        pinecone.create_index(PINECONE_INDEX, dimension=768)
+        print(f"Creating 1536-dimensional index called '{PINECONE_INDEX}'...")
+        pinecone.create_index(PINECONE_INDEX, dimension=1536)
         print("Success")
     except:
         # index already created, continue
@@ -59,7 +59,7 @@ def main():
             print("Pinecone index is up and collection is created")
 
             # Read KB documents in ./data directory and insert embeddings into Vector DB for each doc
-            doc_dir = './data'
+            doc_dir = '/home/cdsw/data/TXT'
             for file in Path(doc_dir).glob(f'**/*.txt'):
                 with open(file, "r") as f: # Open file in read mode
                     print("Generating embeddings for: %s" % file.name)

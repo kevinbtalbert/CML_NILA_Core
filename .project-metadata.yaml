@@ -15,7 +15,7 @@ environment_variables:
     description: "Set value according to your Pinecone environment."
     required: true
   PINECONE_ENVIRONMENT:
-    default: "changeme"
+    default: "gcp-starter"
     description: "Set value according to your Pinecone environment."
     required: true
   PINECONE_INDEX:

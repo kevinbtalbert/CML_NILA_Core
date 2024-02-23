@@ -1,0 +1,21 @@
+Viewing Job run timelineCloudera Docs
+Viewing Job run timeline
+You can view the intermediate stages of the job run at every stage during its life
+    cycle in real-time.In case of a job failure, you can view the specific event and component where the job run
+      failed. This reduces turnaround time during the debugging process for job run failure. You can
+      see the step-by-step advancement of the job run on the UI, including all the granular details
+      instead of reviewing extensive logs to obtain the same insights. 
+In the Cloudera Data Platform (CDP) console, click the
+            Data Engineering tile. The CDE Home page
+          displays.
+
+In the left navigation pane, click Jobs Runs. The
+            Jobs Runs page displays.
+
+Click on the Job Id for which you want to see the status.
+
+Go to the Timeline tab. It displays the summary of the Job run
+          progression in the reverse chronological order for both primary and subordinate
+          stages.
+
+

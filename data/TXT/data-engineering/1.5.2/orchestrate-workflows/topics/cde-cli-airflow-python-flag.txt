@@ -1,0 +1,64 @@
+CDE CLI custom Airflow Python environment flag referenceCloudera Docs
+CDE CLI custom Airflow Python environment flag reference
+You use the following optional flags when creating an Airflow Python
+    environment.
+Table 1. 
+
+Flag
+Description
+
+
+
+--pip-repository-url
+Index URL of the pip repository to override the default public pip
+              repository for the python-env or
+                airflow-python-env resource. This option maps to the
+                --index-url flag of the pip install process. If not specified, the
+              public pip repository is used.
+
+
+--pip-repository-cert
+Certificate file associated with the pip repository for the
+                python-env or airflow-python-env
+              resource.
+
+
+--pip-repository-cred
+CDE credential name used to authenticate against the pip repository for
+              the python-env or airflow-python-env
+              resource.
+
+
+--pip-repository-skip-cert-validation
+Skips the certificate validation for the pip repository for the
+                python-env or airflow-python-env
+              resource.
+
+
+--extra-pip-repository-N-url
+Index URL of the N-th extra pip repository for the
+                python-env or airflow-python-env resource. You
+              can specify up to 100 extra repositories. Maps to the extra-index-url
+              field of the pip install command.
+
+
+--extra-pip-repository-N-cert
+Certificate file associated with the N-th extra pip repository for the
+                python-env or airflow-python-env
+              resource.
+
+
+--extra-pip-repository-N-cred
+CDE credential name used to authenticate against the N-th extra pip
+              repository for the python-env or
+                airflow-python-env resource.
+
+
+--extra-pip-repository-N-skip-cert-validation
+Skips the certificate validation for the N-th extra pip repository for
+              the python-env or airflow-python-env
+              resource.
+
+
+
+Parent topic: Creating a custom Airflow Python environment resource

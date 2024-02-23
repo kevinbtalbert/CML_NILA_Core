@@ -1,0 +1,30 @@
+Enabling Quota Management in CMLCloudera Docs
+Enabling Quota Management in CML 
+After following these steps, you will be able to use the Quota Management feature in
+        CML. 
+
+Go to the Cloudera Private Cloud cluster. 
+
+Edit the CML Control Plane deployment: 
+
+kubectl get deploy dp-mlx-control-plane-app -n cdp-namespace -o yaml
+> file-name
+
+This will save the CML control plane deployment specification.
+                
+
+Take a backup of the above file.
+
+Search for the environment variable ‘ENABLE_UMBRA_INTEGRATION’ in the
+                        file, and change the value to true.
+
+Save the deployment file and run:
+kubectl apply -f file-name.yamlWait
+                    for the new pod to come up.
+
+Verify:
+
+kubectl get pods -n cdp-namespace
+
+
+

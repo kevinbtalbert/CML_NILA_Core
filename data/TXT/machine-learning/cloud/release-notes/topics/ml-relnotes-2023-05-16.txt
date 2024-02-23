@@ -1,0 +1,24 @@
+May 16, 2023Cloudera Docs
+May 16, 2023
+Release notes and fixed issues for version 2.0.38-H1.
+New Features / Improvements
+
+Private Cluster - Private clusters can now be created on AWS. For more
+          information, see Private cluster support.
+Spark - INSERT events are now fired via HMS after a DML action from Spark
+
+
+Fixed Issues
+
+Workspace (DSE-27291) - Fixed an issue where Instance Group Modification failed
+          with an older version workspace.
+Workspace (DSE-27406) - Fixed an issue where SkipValidation was not observed when
+          restoring a workspace.
+UI (DSE-27259) - Fixed an issue where the incorrect resource details were
+          displayed for an instance type.
+Workspace (DSE-9552) - Fixed an issue to allow provisioning of a workspace with
+          more than 30 nodes.
+
+
+
+Parent topic: Older releases

@@ -1,0 +1,281 @@
+Compatibility for Cloudera Data Engineering and Runtime componentsCloudera Docs
+ Compatibility for Cloudera Data Engineering and Runtime components
+Learn about Cloudera Data Engineering (CDE) and compatibility for Runtime components
+  across different versions.
+Table 1. CDE compatibility with Runtime component details
+
+CDE Version
+Spark 2.4.x
+Spark 3.2.x
+Spark 3.3.x
+Airflow
+Iceberg
+Kubernetes
+
+
+
+1.19.4
+
+
+Spark 2.4.8
+Scala 2.11.12
+Java 1.8.0_352
+Python 2.7
+Data lake 7.2.15-7.2.17
+
+
+
+
+Spark 3.2.3
+Scala 2.12.10
+Java 11.0.20
+Python 3.6
+Data lake 7.2.15-7.2.17
+
+
+
+
+Spark 3.3.0
+Scala 2.12.15
+Java 11.0.20
+Python 3.8
+Data lake 7.2.15-7.2.17
+
+
+
+
+Airflow 2.3.4
+Python 3.8
+
+
+
+Iceberg 1.1.0
+
+1.26
+
+
+1.19.3
+
+
+Spark 2.4.8
+Scala 2.11.12
+Java 1.8.0_352
+Python 2.7
+Data lake 7.2.15-7.2.17
+
+
+
+
+Spark 3.2.3
+Scala 2.12.10
+Java 11.0.20
+Python 3.6
+Data lake 7.2.15-7.2.17
+
+
+
+
+Spark 3.3.0
+Scala 2.12.15
+Java 11.0.20
+Python 3.8
+Data lake 7.2.15-7.2.17
+
+
+
+
+Airflow 2.3.4
+Python 3.8
+
+
+
+Iceberg 1.1.0
+
+1.25
+
+
+1.19.2
+
+
+Spark 2.4.8
+Scala 2.11.12
+Java 1.8.0_352
+Python 2.7
+Data lake 7.2.14-7.2.16
+
+
+
+
+Spark 3.2.3
+Scala 2.12.10
+Java 11.0.20
+Python 3.6
+Data lake 7.2.14-7.2.16
+
+
+
+
+Spark 3.3.0
+Scala 2.12.15
+Java 11.0.20
+Python 3.8
+Data lake: 7.2.16
+
+
+
+
+Airflow 2.3.4
+Python 3.8
+
+
+Iceberg 1.1.0
+1.25
+
+
+1.19
+
+
+Spark 2.4.8
+Scala 2.11.12
+Java 1.8.0_352
+Python 2.7
+Data lake 7.2.14-7.2.16
+
+
+
+
+Spark 3.2.3
+Scala 2.12.10
+Java 11.0.20
+Python 3.6
+Data lake 7.2.14-7.2.16
+
+
+
+
+Spark 3.3.0
+Scala 2.12.15
+Java 11.0.20
+Python 3.8
+Data lake: 7.2.16
+
+
+
+
+Airflow 2.3.4
+Python 3.8
+
+
+Iceberg 1.1.0
+1.25
+
+
+1.18.3
+
+
+Spark 2.4.8
+Scala: 2.11.12
+Java 1.8.0_352
+Python 2.7
+Data lake 7.2.14-7.2.16
+
+
+
+
+Spark 3.2.3
+Scala 2.12.10
+Java 11.0.20
+Python 3.6
+DL: 7.2.14-7.2.16
+
+
+N/A
+
+
+Airflow 2.3.4
+Python 3.8
+
+
+Iceberg 0.14.1 
+1.24
+
+
+1.18.1
+
+
+Spark 2.4.8
+Scala 2.11.12
+Java 1.8.0_352
+Python 2.7
+Data lake  7.2.14-7.2.16
+
+
+
+
+Spark 3.2.0
+Scala 2.12.10
+Java 11.0.20
+Python 3.6
+Data lake  7.2.14-7.2.16
+
+
+N/A
+
+
+Airflow 2.3.4
+Python 3.8
+
+
+Iceberg 0.14.1 
+1.23
+
+
+1.18
+
+
+Spark 2.4.8
+Scala 2.11.12
+Java 1.8.0_352
+Python 2.7
+Data lake  7.2.14-7.2.15
+
+
+
+
+Spark 3.2.0
+Data lake 7.2.14-7.2.15
+
+
+N/A
+
+
+Airflow 2.2.5
+Python 3.8
+
+
+Iceberg 0.14.1 
+1.23
+
+
+1.17-h1
+
+
+Spark 2.4.8
+Scala 2.11.12
+Java 1.8.0_352
+Python 2.7
+
+
+Spark 3.2.1
+N/A
+
+
+Airflow 2.2.5
+Python 3.8
+
+
+Iceberg 0.14.1
+1.23
+
+
+

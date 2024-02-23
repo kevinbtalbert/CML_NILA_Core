@@ -1,0 +1,138 @@
+Editing virtual clustersCloudera Docs
+Editing virtual clusters
+You can edit virtual cluster configurations in the UI or use a script to apply
+    configurations to multiple jobs at once.
+importantThe user interface for
+      CDE 1.17 and above has been updated. The left-hand menu was updated to provide easy access to
+      commonly used pages. The steps below will vary slightly, for example, the
+        Overview page has been replaced with the Home
+      page. The new home page still displays Virtual Clusters, but now includes quick-access links
+      located at the top for the following categories: Jobs,
+        Resources, and Download & Docs.
+Edit in UIEdit with Script
+To edit virtual cluster details:
+
+In the Cloudera Data Platform (CDP) console, click the
+          Data Engineering tile. The CDE Home page
+        displays.
+Click Administration in the left navigation menu. The
+          Administration page displays.
+
+In the Services column, select the environment containing the
+          virtual cluster you want to manage.
+In the Virtual Clusters column on the right, click the
+            Cluster Details icon for the virtual cluster you want to
+          manage.
+On the Configuration tab, you can modify the virtual cluster quotas
+        (CPU/memory) dynamically. CDE provides an Edit option to make the
+        configuration changes dynamically which may take a few minutes to update. 
+
+As an Administrator, you can further customize the virtual cluster
+      by applying additional configurations all at once using the cde-utils script. Click cdp-cde-utils.sh to download the script.
+      Customizations include applying spark configurations to all jobs, enabling and disabling gang
+      schedueling, and
+      initiating
+      faster autoscaling times for nodes in an autoscaler cluster for Amazon Web Services
+      (AWS). See the following cde-utils script and options to apply these
+      changes:
+importantBefore using the script, the user must export the
+          kubeconfig file to ensure that the virtual cluster is accessible via kubectl.
+
+Apply Spark configurations to all new jobs
+This script allows users to add and update default configurations for all Spark jobs all
+          at once. The options required are as follows:
+
+
+-h <host_name>: You must provide this
+              option, and paste the domain of the URL into a text editor to identify the endpoint
+              host. For example, if the URL is
+              https://xyz.cde-vjgd8ksl.dsp-azur.xcu2-8y8x.dev.cldr.work/dex/ui/jobs, then paste the
+              following
+              :xyz.cde-vjgd8ksl.dsp-azur.xcu2-8y8x.dev.cldr.work
+-c <spark_default_configurations>: You must provide option
+                -c <spark_configuration> to add all the spark-configurations
+              inside the single quotes (‘ ’) with a delimiter comma (,) at the virtual cluster
+              level. There must be at least one configuration in the command. For example:
+              ./cde-utils.sh add-spark-config-in-virtual-cluster -h <host_name> -c ‘spark.driver.supervise=“false”,spark.executor.instances=“2”’The
+              ,user can add multiple configurations as shown above in the example: ‘
+                “key1”=“val1”, “key2”=“val2” , ...’ . The , <host_name> is is determined
+              by the provided information in the host name option.
+
+
+Enabling and disabling gang scheduling
+This script enables and disables gang scheduling at the virtual cluster level for all
+          jobs that are inside the virtual cluster. The options required are as follows:
+-h <host_name>: You must provide this
+              option, and paste the domain of the URL into a text editor to identify the endpoint
+              host. For example, if the URL is
+              https://xyz.cde-vjgd8ksl.dsp-azur.xcu2-8y8x.dev.cldr.work/dex/ui/jobs, then paste the
+              following:
+              xyz.cde-vjgd8ksl.dsp-azur.xcu2-8y8x.dev.cldr.work
+--gang-scheduling <gang_scheduling_status>: You must provide
+              this option to toggle the status of the gang scheduling at the virtual cluster level.
+              You can only use enable or disable options. To
+              disable gang scheduling, see the following example:
+              ./cde-utils.sh add-spark-config-in-virtual-cluster -h <host_name> --gang-scheduling disableThe
+              , <host_name> is determined by the provided information in the host name
+              option.
+importantYou must provide either configurations option
+              (-c) or gang-scheduling option(--gang-scheduling)
+            for this sub-command. You may also provide both options.
+Initiating faster autoscaling times
+You can increase the speed of autoscaling times for nodes in
+          an autoscaler cluster for Amazon Web Services (AWS) by using a script. This script allows
+          you to speed up the scale down progress for situations where you scale up to hundreds of
+          nodes. This is a cost-saving measure. The options required for scaling down nodes are as
+          follows: 
+-i <interactive_menu>: You can use this option to use an
+              interactive menu that uses the arrow keys to navigate through the menu options. For
+                example:./cde-utils.sh edit-cluster-autoscaler -iimportantIn the
+                  edit-cluster-autoscaler sub command, you can provide all the
+                other options except -i <interactive_menu>, or only provide
+                  -i <interactive_menu> to change the value of other options
+                using the interactive menu.
+--scale-down-delay-after-add: Reduce the value of this option which
+              specifies the interval after scaling up when scale down evaluation resumes. This
+              allows you to speed up the process. The default value is 10 minutes. Permitted values
+              are 10 seconds, 5 minutes, and 1 hour. The format is as follows: <time>[s / m / h].
+              For
+              Example:./cde-utils.sh edit-cluster-autoscaler --scale-down-delay-after-add 10m
+--scale-down-delay-after-delete: You can decrease the value for
+              this option which is the duration of time after node deletion when the scale down
+              evaluation resumes. The default is 10 seconds. Permitted values are 10 seconds, 5
+              minutes, and 1 hour. The format is as follows: <time>[s / m / h]. For
+              example:./cde-utils.sh edit-cluster-autoscaler --scale-down-delay-after-delete 10s
+--scale-down-delay-after-failure: You can decrease the value for
+              this option which is a duration of time after a scale down failure when the scale down
+              evaluation resumes. The default value is 3 minutes. Permitted values are 10 seconds, 5
+              minutes, and 1 hour. The format is as follows: <time>[s / m / h]. For
+              example:./cde-utils.sh edit-cluster-autoscaler --scale-down-delay-after-failure 3m
+--scale-down-unneeded-time: To speed up the process, the user can
+              decrease the value of this option which specifies the amount of time before a node
+              qualifies for scale down. The default value is 10 minutes. Permitted values are 10
+              seconds, 5 minutes, and 1 hour. The format is as follows: <time>[s / m / h]. For
+              example:./cde-utils.sh edit-cluster-autoscaler --scale-down-unneeded-time 10m
+
+--unremovable-node-recheck-timeout: You can reduce the value for this
+              option which is the duration of the timeout before the unremovable node is checked
+              again. The default value is 5 minutes. Permitted values are 10 seconds, 5 minutes, and
+              1 hour. The format is as follows: <time>[s / m / h]. For
+              example:./cde-utils.sh edit-cluster-autoscaler --unremovable-node-recheck-timeout 5m
+
+Example use cases with commands
+These example use cases and commands show how you can use the cde-utils script.
+Initiate faster autoscaling times with the command below. The order of options is
+              not significant in this
+              command:./cde-utils.sh edit-cluster-autoscaler --scale-down-delay-after-add 1m --scale-down-delay-after-failure 1m --scale-down-delay-after-delete 5s
+--scale-down-unneeded-time 1m --unremovable-node-recheck-timeout 1m
+
+Add a single Spark configuration at the virtual cluster
+              level:./cde-utils.sh add-spark-config-in-virtual-cluster -h <host_name> -c spark.executor.instances=“2”
+Add multiple spark configurations at the virtual cluster
+              level:./cde-utils.sh add-spark-config-in-virtual-cluster -h <host_name> -c ‘spark.driver.supervise=“false”,spark.executor.instances=“2”’
+Enable gang
+              scheduling:./cde-utils.sh add-spark-config-in-virtual-cluster -h <host_name> --gang-scheduling enable
+
+
+
+Related informationAccessing the Kubernetes dashboardSupport Video: Enabling kubectl for CDE

@@ -1,0 +1,14 @@
+ML Runtimes Version 2023.05.2Cloudera Docs
+ML Runtimes Version 2023.05.2
+Major features and updates for ML Runtimes.
+
+ML Runtime Releases included in CML PVC versions
+
+
+Runtime Release 2022.11 included in CML PVC 1.5.0, 1.5.1
+Runtime Release 2021.12 included in CML PVC 1.3.4, 1.4.0, 1.4.1
+
+
+
+
+Parent topic: ML Runtimes What's New

@@ -1,0 +1,36 @@
+Enabling a fully private network for a CDE service for Azure (Tech Preview)Cloudera Docs
+Enabling a fully private network for a CDE service for Azure (Tech Preview)
+Learn how to enable a fully private network setup for a Cloudera Data Engineering (CDE)
+    service for Azure services in Cloudera Data Platform (CDP). Additionally, you can learn how to
+    add User Defined Routing (UDR) in the UI or CLI. The UDR helps from exposing public IP addresses
+    in your service. This feature ensures that all Azure services used by CDE are provisioned as private (private
+      Azure Kubernetes Service (AKS), MySQL, and Storage Accounts). The Azure cluster is deployed as
+      a fully private network cluster when you enable a CDE service and enables VNet access through
+      private endpoints and private links. Lastly, CDE on Microsoft Azure does not currently support
+      SSD or Spot instances.
+CDE UICDP CLI
+Before you begin
+
+Ensure that you have created and enabled a CDE service. Additionally, the Cloudera Data
+            Platform (CDP) must communicate with the CDE service on a private network in order to
+            manage the CDE service lifecycle. This communication occurs using the Cluster
+            Connectivity Manager (CCM) v2; therefore, to enable this feature, the CDP environment
+            must be enabled with the CCMv2. Once the CCMv2 is enabled at the CDP environment level,
+            the Enable Private Network option displays in the CDE user
+            interface when you enable a service. For more information on how to enable a CDE service
+            and set up CCMv2, refer to the links below.noteTo enable UDR,
+              you must enable a private network flag and you must provide a subnet.
+
+UI steps for enabling a private network and enabling UDR
+
+While enabling a CDE service for an Azure environment, select Enable Private
+          Network. Optionally, once you've enabled a private network on Microsoft Azure,
+        you can select the User Defined Routing checkbox. Use this to avoid
+        exposing public IP addresses in your service by using a user defined routing (UDR) table.
+        After, you'll need to specify a Subnet.
+Click Enable.
+
+You can enable the user defined routing (UDR) with the CDP CLI using the –network-outbound-type CLI switch with a value of “UDR”. See the example command:
+          ./clients/cdpcli/cdp.sh de enable-service --name "test-service-cdpcli" --env "dex-priv-env" --instance-type "Standard_D8s_v4" --minimum-instances 0 --maximum-instances 10 --enable-private-network --subnets dex-dev.internal.19.westus2 --network-outbound-type UDR
+
+Related informationEnabling a CDE serviceCluster Connectivity Manager (CCM)Enabling Cluster Connectivity Manager (CCM) in the Management ConsoleParent topic: Enabling a Cloudera Data Engineering service

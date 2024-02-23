@@ -1,0 +1,8 @@
+Behavioral ChangesCloudera Docs
+Behavioral Changes
+Learn about behavioral changes in Cloudera Machine Learning.
+Summary: When creating new CML Workspaces, the environment name length minimum has
+   changed from 4 to 5 characters. Workspaces may fail with the error Invalid
+    Argument: Environment name must only include lowercase letters, numbers, and hyphens and must be
+    between 5 and 28 characters.
+

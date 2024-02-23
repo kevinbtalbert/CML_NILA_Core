@@ -1,0 +1,238 @@
+Upgrade CML workspaces version 1.4.1 to 1.5.0 (ECS)Cloudera Docs
+Upgrade CML workspaces version 1.4.1 to 1.5.0 (ECS)
+When you upgrade from Private Cloud version 1.4.1 to version 1.5.0, you need to manually
+  upgrade ML workspaces that are running on ECS using internal NFS.
+In ECS Private Cloud 1.5.0, the internal NFS implementation is changed from using an NFS
+   provisioner for each workspace, to using a Longhorn Native RWX Volume. 
+On either ECS or OCP, internal workspaces on PVC 1.4.0/1.4.1 use the NFS server provisioner as
+   a storage provisioner. This server provisioner still works in 1.5.0, however, it is deprecated,
+   and will be removed in 1.5.1.
+Existing workspaces in 1.4.1 need to be upgraded to 1.5.0. These workspaces use the older
+   storage provisioner. You can do one of the following: 
+Migrate the workspace to Longhorn before 1.5.1 is released, or:
+Create a new 1.5.0 workspace, and migrate the workloads to that workspace now. noteThere
+      is no change in the underlying storage of external NFS backed workspaces and these can be
+      simply upgraded to 1.5.0.
+
+noteECS upgrades and supported registries
+   
+Upgrading a workspace from CDP version 1.4.1 to 1.5.1 is supported only on Embedded Registry
+Upgrading a workspace from CDP version 1.5.0 to 1.5.1 is supported on Embedded Registry, Public/Cloudera 
+       Default Registry, or External Registry.
+
+The manual steps mentioned in this guide are required if an existing workspace backed by
+   internal NFS (which was created on PVC 1.4.1 or below) needs to be migrated to Longhorn RWX.
+
+Update ECS PVC to version 1.5.0.
+Each existing ML workspace can now be upgraded, although this is optional. If you want to
+        continue using your existing workspaces without upgrading them, then this procedure is not
+        required. This is true for all existing workspaces (both internal and external NFS).
+If you want to upgrade a workspace, then first determine whether the workspace is backed by
+    internal or external NFS. 
+If the existing workspace is backed by external NFS, you can simply upgrade the workspace
+            from the UI. There is no need to follow the rest of this procedure.
+If the existing workspace is backed by internal NFS, then please follow this procedure to
+            migrate to Longhorn RWX after the workspace upgrade.
+
+Upgrade the workspace from CML UI. 
+Get the Kubeconfig for your Private Cloud cluster.
+Try to suspend the workspace manually so that there are no read/write operations happening to
+        the underlying NFS. Stop all your running workloads - sessions, jobs, application,
+        deployments and so forth. Also, scale down ds-vfs and
+          s2i-client deployments with these commands: 
+kubectl scale -n <workspace-namespace>
+              --replicas=0 deployment ds-vfs
+kubectl scale -n <workspace-namespace>
+              --replicas=0 deployment s2i-client
+
+Create a backup volume for the upgrade process. The backup can either be taken in the cluster
+        itself or it can also be taken outside in an external NFS. Based on what you want, go ahead
+        with either step a. or b. below. Substitute your workspace details where indicated with
+        angle brackets. Start by creating a backup.yaml file. Add the following
+        content to the file and run it using the command: kubectl apply -f ./backup.yaml 
+Internal backup:apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: projects-pvc-backup
+  namespace: <existing-workspace-namespace>
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Gi
+  storageClassName: longhorn
+
+External backup: apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: projects-pvc-backup
+spec:
+  capacity:
+    storage: 500Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - nfsvers=3
+  nfs:
+    server: <your-external-nfs-address>
+    path: <your-external-nfs-export-path>
+  volumeMode: Filesystem
+
+---
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: projects-pvc-backup
+  namespace: <existing-workspace-namespace>
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Gi
+  storageClassName: ""
+  volumeName: projects-pvc-backup
+  volumeMode: Filesystem
+
+
+Now, create a migrate.yaml file. Add the following content to the file. With
+        the following Kubernetes job, create a backup of the existing workspace’s NFS data to the
+        volume that was created in the previous step. Run the job using the command:
+          kubectl apply -f ./migrate.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: <existing-workspace-namespace>
+  name: projects-pvc-backup
+spec:
+  completions: 1
+  parallelism: 1
+  backoffLimit: 10
+  template:
+    metadata:
+      name: projects-pvc-backup
+      labels:
+        name: projects-pvc-backup
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: projects-pvc-backup
+          image: docker-private.infra.cloudera.com/cloudera_base/ubi8/cldr-ubi-minimal:8.6-751-fips-03062022
+          tty: true
+          command: [ "/bin/sh" ]
+          args: [  "-c", "microdnf install rsync && rsync -P -a /mnt/old/ /mnt/new && chown -R 8536:8536 /mnt/new;" ]
+          volumeMounts:
+            - name: old-vol
+              mountPath: /mnt/old
+            - name: new-vol
+              mountPath: /mnt/new
+      volumes:
+        - name: old-vol
+          persistentVolumeClaim:
+            claimName: projects-pvc 
+        - name: new-vol
+          persistentVolumeClaim:
+            claimName: projects-pvc-backup
+
+Monitor the previous job for completion. Logs can be retrieved using:
+        kubectl logs -n <workspace-namespace> -l job-name=projects-pvc-backup
+        You can check for job completion with:
+        kubectl get jobs -n <workspace-namespace> -l job-name=projects-pvc-backup
+        Once the job completes, move on to the next step.
+Now delete the existing NFS volume for the workspace.
+    kubectl delete pvc -n <workspace-namespace> projects-pvc
+kubectl patch pvc -n <workspace-namespace> projects-pvc -p '{"metadata":{"finalizers":null}}'
+Perform the following steps to modify underlying NFS from NFS provisioner to Longhorn RWX.
+Get the release name for the workspace, using: helm list -n
+              <workspace-namespace>. For example, in this case
+              mlx-workspace1 is the release-name.
+            helm list -n workspace1
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: ./../piyushecs
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: ./../piyushecs
+NAME          	NAMESPACE 	REVISION	UPDATED                                	STATUS  	CHART                   	APP VERSION
+mlx-workspace1	workspace1	4       	2023-01-04 08:07:47.075343142 +0000 UTC	deployed	cdsw-combined-2.0.35-b93
+
+Save the existing Helm values.
+            helm get values <release-name> -n <workspace-namespace> -o yaml > old.yaml
+Modify the ProjectsPVCStorageClassName in the
+              old.yaml file to longhorn and add
+              ProjectsPVCSize: 1Ti. For example.
+              ProjectsPVCStorageClassName: longhorn-nfs-sc-workspace1 should be
+            changed to ProjectsPVCStorageClassName: longhorn Also, add this to the
+            file: ProjectsPVCSize: 1Ti
+
+Get the GitSHA from old.yaml: grep GitSHA
+              old.yaml For example: GitSHA: 2.0.35-b93
+Get the release chart cdsw-combined-<GitSHA>.tgz This is
+            available in dp-mlx-control-plane-app pod in the namespace at folder
+              /app/service/resources/mlx-deploy/ Contact Cloudera support to
+            download the chart if needed. 
+Delete the jobs and stateful sets (these are recreated after the helm install) kubectl --namespace <workspace-namespace> delete jobs  --all
+kubectl --namespace <workspace-namespace> delete statefulsets  --all
+
+Do a Helm upgrade to the same release.
+            helm upgrade <release-name> <path to release chart (step e)> --install -f ./old.yaml --wait  --namespace <workspace-namespace> --debug --timeout 1800s
+
+Scale down the ds-vfs and s2i-client deployments with the
+        commands: kubectl scale -n <workspace-namespace> --replicas=0 deployment ds-vfs
+kubectl scale -n <workspace-namespace> --replicas=0 deployment s2i-client
+Copy the data from the backup into this upgraded workspace. In order to do this, create a
+          migrate2.yaml file. Add the following content to the file. Run the
+        job using the command kubectl apply -f ./migrate2.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: <existing-workspace-namespace>
+  name: projects-pvc-backup2
+spec:
+  completions: 1
+  parallelism: 1
+  backoffLimit: 10
+  template:
+    metadata:
+      name: projects-pvc-backup2
+      labels:
+        name: projects-pvc-backup2
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: projects-pvc-backup2
+          image: docker-private.infra.cloudera.com/cloudera_base/ubi8/cldr-ubi-minimal:8.6-751-fips-03062022
+          tty: true
+          command: [ "/bin/sh" ]
+          args: [ "-c", "microdnf install rsync && rsync -P -a /mnt/old/ /mnt/new && chown -R 8536:8536 /mnt/new;" ]
+          volumeMounts:
+            - name: old-vol
+              mountPath: /mnt/old
+            - name: new-vol
+              mountPath: /mnt/new
+      volumes:
+        - name: old-vol
+          persistentVolumeClaim:
+            claimName: projects-pvc-backup 
+        - name: new-vol
+          persistentVolumeClaim:
+            claimName: projects-pvc 
+
+Monitor the job above for completion. Logs can be retrieved using:
+    kubectl logs -n <workspace-namespace> -l job-name=projects-pvc-backup2
+    You can check for job completion with:
+    kubectl get jobs -n <workspace-namespace> -l job-name=projects-pvc-backup2
+    Once the job completes, move on to the next step.
+   
+After the above job is completed, scale up ds-vfs and
+          s2i-client using the command:
+        kubectl scale -n <workspace-namespace> --replicas=1 deployment ds-vfs
+        and
+        kubectl scale -n <workspace-namespace> --replicas=1 deployment s2i-client
+The upgraded workspace is ready to use. In case you want to delete the backup, then delete
+    the existing backup volume for the workspace using these commands:
+    kubectl delete pvc -n <workspace-namespace> projects-pvc-backup
+kubectl patch pvc -n <workspace-namespace> projects-pvc-backup -p '{"metadata":{"finalizers":null}}'
+noteTaking backup of the existing workspace will take additional space on either PVC cluster (internal backup) 
+    or external NFS storage (external backup). So, customers can clear this backup once their workspace is properly migrated.
+
+Parent topic: How to upgrade CML workspaces (ECS)

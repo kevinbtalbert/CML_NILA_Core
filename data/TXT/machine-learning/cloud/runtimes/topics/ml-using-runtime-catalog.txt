@@ -1,0 +1,19 @@
+Using Runtime CatalogCloudera Docs
+Using Runtime Catalog
+You can use the Runtime catalog to list all runtimes that are available for your
+    deployment.
+The Runtime Catalog lists information about each of the
+      available runtimes. Information includes the editor and kernel supported by the runtime along
+      with the edition, version, and a brief description. Administrator users can use the
+          Hide Disabled toggle so that only runtimes with
+          Enabled or Deprecated status display. The
+        toggle is on by default.
+The Status filter also applies to runtime variants.
+
+
+Click Runtime Catalog in the left Navigation bar to display a
+          list of all available runtimes.
+
+
+
+Parent topic: Managing ML Runtimes

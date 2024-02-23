@@ -1,0 +1,14 @@
+Quota ManagementCloudera Docs
+Quota Management
+GPU resources are limited in the cluster and all Data Services, that is, CML and CDE
+    can share or dedicatedly set resource quota for their experience. Cloudera recommendeds to set
+    the GPU resource quota so that each data service can use the allocated GPU resources
+    effectively. Sharing GPU resources might lead to resource contention and delayed POD allocation. 
+ Cloudera recommendeds to preallocate GPU resources quota for each Data Service using
+        resource pool. For information about configuring resource pool, see Managing cluster
+          resources using Quota Management.
+Following is an example illustration of GPU resource allocation: 
+
+
+
+Related informationManaging cluster resources using Quota ManagementParent topic: Using GPUs in Cloudera Data Engineering (Technical Preview)

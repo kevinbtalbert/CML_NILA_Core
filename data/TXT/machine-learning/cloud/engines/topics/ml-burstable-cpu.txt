@@ -1,0 +1,18 @@
+Burstable CPUsCloudera Docs
+Burstable CPUs
+CML configures no upper bound on the CPU resources that Workloads can use so that they
+  can use all of the CPU resources available on the node where they are running. By configuring no
+  CPU limits, CML enables efficient use of the CPU resources available on your cluster
+  nodes.
+
+If the CPUs are idle then the workloads can burst and take advantage of the free CPU cycles.
+    For example, if you've launched a session with 1vCPU but the code inside it requires more than
+    1vCPU, the workload container can consume all the available CPU cycles on the node where it's
+    launched.
+When the cluster is highly utilized and CPU resources are sparse, Workloads will be limited
+    to use the number of CPU resources configured in their resource profile.
+If multiple containers are attempting to use excess CPU, CPU time is distributed in
+    proportion to the amount of CPU initially requested by each container.
+
+
+Parent topic: Managing Engines

@@ -1,0 +1,24 @@
+Accelerating CDE Jobs and SessionsCloudera Docs
+Accelerating CDE Jobs and Sessions
+You can accelerate your Spark jobs and Sessions using GPUs after you add GPU resources
+    to the CDE service and virtual cluster. Perform the following to use GPU resources:
+
+
+
+Create a CDE service with GPU quota.
+
+
+Create a virtual cluster in that CDE service with GPU
+                quota.
+
+
+Enable GPU acceleration when creating Spark jobs using CDE UI or when running
+            jobs using CDE CLI.
+
+Enable GPU acceleration when creating a session using CDE UI or CDE CLI.
+Check whether the Spark job or session ran using the
+              GPU resources.
+
+
+
+Parent topic: Accelerating CDE Jobs and Sessions using GPUs (Technical Preview)

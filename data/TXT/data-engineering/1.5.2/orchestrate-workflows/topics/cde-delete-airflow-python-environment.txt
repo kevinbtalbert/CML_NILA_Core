@@ -1,0 +1,10 @@
+Deleting Airflow Python environment resourcesCloudera Docs
+Deleting Airflow Python environment resources 
+You can delete the custom Python environment resources when it is not active and if not
+    needed.
+Delete the custom Airflow Python environment resource.
+
+cde resource delete --name $RESOURCE_NAME
+
+
+Parent topic: Creating a custom Airflow Python environment (Technical Preview)

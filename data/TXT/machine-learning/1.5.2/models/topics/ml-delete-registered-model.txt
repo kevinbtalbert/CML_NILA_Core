@@ -1,0 +1,27 @@
+Delete a model from Model RegistryCloudera Docs
+Delete a model from Model Registry
+You can delete a model from Model Registry through the UI or by means of an API call. 
+Deleting through the UI
+
+In Model Registry, find the model to delete.
+In Actions, select Delete.
+Click OK to confirm deleting the model.
+
+The model is deleted from the Model Registry.
+
+Deleting a model with an API call
+You can run API calls in the session workbench to delete a model.
+
+Use the first two commands to obtain the model_id: api_client=cmlapi.default_client()
+api_client.list_registered_models()
+The json output of the command includes an example
+       model_id as shown here:
+      'model_id': '7xwf-e6pl-tb28-iylh',
+Insert the model_id (replace the example shown below with your own value)
+     to the following command and run it.
+     api_client.delete_registered_model(model_id='7xwf-e6pl-tb28-iylh')
+
+The model is deleted from the Model Registry.
+
+
+Parent topic: Registering and deploying a Model Registry

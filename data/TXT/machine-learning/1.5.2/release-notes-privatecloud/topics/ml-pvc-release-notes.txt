@@ -1,0 +1,17 @@
+What's NewCloudera Docs
+What's New
+CDP Private Cloud 1.5.2 includes the following features for Cloudera Machine
+    Learning.
+New features
+
+Support for Buildkit on ECS
+Switching from docker to BuildKit on RHEL 8.x and CentOS 8.x for building models and
+            experiments images.
+Quota Management at workspace level (Tech Preview) 
+Enables you to control how resources are allocated within your CML workspace.
+Parallel Rsync in CDSW to CML migration tool
+Added parallel rsync to CDSW to CML migration tool.
+
+
+
+Related informationKnown Issues and Limitations

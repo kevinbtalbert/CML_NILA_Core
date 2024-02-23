@@ -1,0 +1,18 @@
+Provision a workspace using a configured resource poolCloudera Docs
+Provision a workspace using a configured resource pool
+Provisioning a workspace is the same as it was before quota management, with
+        additional configurations for the quota for specified workspaces.
+
+CML reserves 30 GB Memory and 20 CPU for the CML workspace
+                installation.
+The minimum requirement for a CML workspace to be provisioned is 38 GB of
+                Memory and 22 CPU.
+
+
+
+
+
+
+In this example out of 45 GB, 30 GB and 20 Cores will be reserved for CML workspace. The
+            rest is available for CML workloads. 
+

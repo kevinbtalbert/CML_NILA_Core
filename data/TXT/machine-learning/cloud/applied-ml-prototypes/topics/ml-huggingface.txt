@@ -1,0 +1,51 @@
+HuggingFace Spaces and Community AMPsCloudera Docs
+HuggingFace Spaces and Community AMPs
+You can run HuggingFace Spaces or Community AMPs, which are both types of machine
+  learning projects, in your CML workspace. In the HuggingFace tab in AMPs are several HF spaces
+  that are tested and supported on CML.
+
+
+
+HuggingFace is an online community for machine learning (Hugging Face). It serves as a repository for machine
+   learning projects and datasets. Spaces are individual projects or applications. Community AMPs
+   are machine learning prototypes created by the CML community.
+There are a few things to keep in mind when launching HuggingFace Spaces or Community AMPs in
+   your CML workspace.
+
+To launch a HuggingFace project, you first need to create a free account on HuggingFace and obtain an access token.
+Make sure that the Hugging Face project actually works. Many of the projects are community-created projects that may be experimental or no longer maintained.
+The HuggingFace Space must use the gradio or streamlit libraries to run on CML.
+The Community tab is not visible by default. To enable this tab, in Site Administration > Settings, select: Allow users to deploy community AMPs.
+
+
+
+Enable users to deploy external spaces
+By default, users cannot deploy Hugging Face spaces outside the curated collection in
+  the Hugging Face tab.
+To enable users to deploy external Hugging Face spaces, in Site Administration > Settings, select: 
+Allow users to deploy external Hugging Face Space
+
+When selected, the ability to deploy external HuggingFace spaces is available.
+
+
+Launch a HuggingFace or Community project
+You can launch a HuggingFace Space or community project by clicking
+   Deploy for the respective space.
+In Configure Project, you can set some parameters for the space.
+If needed, enter your Hugging Face access token. The environment variables
+    HF_TOKEN and HUGGING_FACE_HUB_TOKEN both require
+   the same value.
+noteDo not reduce any of the values specified for cpu, memory, or gpu.
+Click Launch Project to deploy the project in your workspace. CML will
+   run scripts to download the project from the HuggingFace space and install it in CML. This
+   process can take some time.
+
+
+Launch a HuggingFace Space outside the catalog
+It is also possible to deploy Hugging Face spaces that are not included in the
+  AMP catalog. Note that there are several caveats on which HuggingFace spaces may be able to work
+  in CML, as described above.
+Click Deploy External to open the UI for launching an external project,
+   and follow the instructions. The project is imported from HuggingFace or the specified
+   repository
+

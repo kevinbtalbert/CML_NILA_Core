@@ -1,0 +1,14 @@
+Uploading the resource to build the Python environmentCloudera Docs
+Uploading the resource to build the Python environment 
+After you create the resource, you have to upload the resource to build your
+    environment.Create a requirements.txt file specifying the Python package and
+      version dependencies required by your CDE job.
+Upload the requirements.txt file to the resource.
+
+cde resource upload --name $RESOURCE_NAME --local-path requirements.txt
+
+This launches a job that builds the Python environment from the requirement.txt
+      file. You can check the status of this job using the cde resource
+        list-events --name $RESOURCE_NAME command. The Python resource must be in the
+        Ready state after you upload and before you activate it.
+Parent topic: Creating a custom Airflow Python environment (Technical Preview)

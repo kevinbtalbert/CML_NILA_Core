@@ -1,0 +1,14 @@
+November 15, 2023Cloudera Docs
+November 15, 2023
+Release notes and fixed issues for version 2.0.41-b236.
+Fixed Issues
+
+DSE-32250 - Spark Executors now report the correct create time and resource usage
+          in the Site Administration > Usage > Export Usage List. Note that previously incorrect entries for Spark executors are reset to
+          0.
+DSE-32222 - On AWS, upgrading an NTP-enabled workspace to Kubernetes 1.25 AWS now
+          incorporates various internal improvments.
+
+
+
+Parent topic: Older releases

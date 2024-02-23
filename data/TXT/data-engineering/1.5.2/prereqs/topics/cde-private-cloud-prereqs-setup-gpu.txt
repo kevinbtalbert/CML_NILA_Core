@@ -1,0 +1,30 @@
+GPU nodes setupCloudera Docs
+GPU nodes setup
+You can add the GPU hardware to the existing or new ECS or OCP cluster as a worker
+    node. 
+For information about GPU hardware requirements, see Additional resource requirements
+        for CDE.
+You must install nvidia-container-toolkit on the worker node. For more on
+        nvidia-container-runtime migration to
+        nvidia-container-toolkit, see Migration Notice. For information about the installation, NVIDIA Installation Guide. If using Red Hat Enterprise
+      Linux (RHEL), use dnf to install the package. For an example with RHEL 8.7,
+      see Installing the NVIDIA Container Toolkit.
+You can use following options to advertise the GPUs in the Kubernetes cluster:
+
+
+Nvidia device plugin: In ECS installation, if the Nvidia drivers are correctly
+          installed, the Nvidia-device-plugin automatically advertises the GPU resource to the
+          scheduler. Platform administrator need not deploy the Nvidia device plugin. 
+
+
+Node Feature Discovery Operator (NFD) and GPU Operator: OCP administrators must
+          install NFD and GPU Operator for advertising the GPU resource to the Kubernetes
+          scheduler.
+
+
+If the Nvidia drivers are correctly installed, the above options should advertise
+      the GPU resource to the scheduler. For more information, see NVIDIA Device Plugin
+      documentation.
+ 
+
+Related informationAdditional resource requirements for Cloudera Data EngineeringAdding hosts to a CDP Private Cloud Data Services ClusterNVIDIA Device PluginParent topic: Using GPUs in Cloudera Data Engineering (Technical Preview)

@@ -1,0 +1,36 @@
+Technical service bulletinsCloudera Docs
+Technical service bulletins 
+Learn about the technical service bulletins (TSBs) with the Cloudera Data Engineering
+    (CDE) service on public clouds, the impact or changes to the functionality, and the
+    workaround.
+
+
+TSB 2022-588: Kubeconfig and new version of
+          aws-iam-authenticator
+Regenerate Kubeconfig and in conjunction use a newer version of aws-iam-authenticator on
+          AWS. Kubeconfig in Cloudera Data Platform (CDP) Public Cloud Data Services needs to be
+          regenerated because the Kubeconfig generated before June 15, 2022 uses an old APIVersion
+            (client.authentication.k8s.io/v1alpha1) which is no longer supported. This causes
+          compatibility issues with aws-iam-authenticator starting from v0.5.7. To be able to use the new
+          aws-iam-authenticator, the Kubeconfig needs to be regenerated.
+
+Knowledge article
+For the latest update on this issue see the corresponding Knowledge Base article: TSB 2022-588: Kubeconfig and new version of
+            aws-iam-authenticator
+
+
+
+TSB 2022-587: CDE 1.14 and above using Kubernetes 1.21 will fail
+          service account token renewal after 90 days
+Cloudera Data Engineering (CDE) on Amazon Web Services (AWS) running version CDE 1.14
+          and above using Kubernetes 1.21 will observe failed jobs after 90 days of service uptime
+                [1].[1] “For Amazon Elastic Kubernetes Service
+              (EKS) clusters, the extended expiry period is 90 days. Your Amazon EKS cluster's
+              Kubernetes API server rejects requests with tokens older than 90 days.”
+
+Knowledge article
+For the latest update on this issue see the corresponding Knowledge Base article: TSB 2022-587: CDE 1.14 and above using Kubernetes 1.21
+            will fail service account token renewal after 90 days
+
+
+Parent topic: Known issues and limitations in Cloudera Data Engineering Public Cloud

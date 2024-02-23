@@ -1,0 +1,16 @@
+LimitationsCloudera Docs
+Limitations
+This section provides an overview of the limitations for CML quota
+  management.
+
+
+In the Tech Preview release, ‘root.default’ resource pool should not be used to
+     provision CML workspace. At least one resource pool should be created for CML.
+If the resource pool gets deleted, underlying CML workspace and workloads will be
+     deleted. But there will be stale entries in the CML UI reflecting that the workspace still
+     exists but underlying applications on the cluster will be deleted.
+If the quota for users is modified, it will be reflected when the next workload
+     (session or job) is submitted.
+
+
+

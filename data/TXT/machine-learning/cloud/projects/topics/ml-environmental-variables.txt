@@ -1,0 +1,26 @@
+Environmental VariablesCloudera Docs
+Environmental Variables
+Environmental variables help you customize engine environments, both globally and for
+      individual projects/jobs. 
+For
+         example, if you need to configure a particular timezone for a project or increase the
+         length of the session or job timeout windows, you can use environmental variables to do
+         so.
+For a
+         list of the environmental variables you can configure and instructions on how to configure
+         them, see Engine Environment Variables.
+You can create new environment variables in the following pages: 
+Project Settings > Advanced
+New Job > Job Settings
+New Application > Application Settings
+User Settings > Environment Variables
+Site Administration > Runtime
+
+To add an environmental variable: 
+Enter the name and value.
+Click Add
+Optionally, click Hide/Show to hide the value from viewing by
+               users. This can help with hiding sensitive values stored in environment variables,
+               such as passwords. The value is set to Hide by default.
+
+

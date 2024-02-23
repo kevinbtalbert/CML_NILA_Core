@@ -1,0 +1,12 @@
+Model Registry permissionsCloudera Docs
+Model Registry permissions
+Model registry permissions for the following actions are separate from workspace
+  permissions, but they are inherited from environment level workspace permissions.
+
+create
+delete
+
+Therefore, if you have the MLAdmin role on an environment, you can perform these actions for
+   model registry, but an MLUser cannot.
+
+Parent topic: Setting up Model Registry

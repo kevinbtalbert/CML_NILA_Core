@@ -1,0 +1,55 @@
+MLflow transformersCloudera Docs
+MLflow transformers
+This is an example of how MLflow transformers can be supported in Cloudera Machine
+  Learning.
+noteThis is an experimental feature.
+This example shows how to implement a translation workflow using a translation model.
+
+Save the following as a file, for example, named mlflowtest.py.
+    #!pip3 install torch transformers torchvision tensorflow
+    
+    import mlflow
+    from mlflow.models import infer_signature
+    from mlflow.transformers import generate_signature_output
+    from transformers import pipeline
+    
+    en_to_de = pipeline("translation_en_to_de")
+    
+    data = "MLflow is great!"
+    output = generate_signature_output(en_to_de, data)
+    #signature = infer_signature(data, output)
+    
+    with mlflow.start_run() as run:
+    mlflow.transformers.log_model(
+    transformers_model=en_to_de,
+    artifact_path="english_to_german_translator",
+    input_example=data,
+    registered_model_name="entodetranslator",
+    )
+    
+    
+    model_uri = f"runs:/{run.info.run_id}/english_to_german_translator"
+    loaded = mlflow.pyfunc.load_model(model_uri)
+    
+    print(loaded.predict(data))
+In the Model Registry page, find the entodetranslator model. Deploy the
+    model.
+Make a request using the following payload: {
+  "dataframe_split": {
+    "columns": [
+      "data"
+    ],
+    "data": [
+      [
+        "MLflow is great!"
+      ]
+    ]
+  }
+}
+In a session, run the mlflowtest.py file. It should print the following
+    output. print(loaded.predict(data))
+
+['MLflow ist großartig!']
+
+noteFor more information, see mlflow.transformers.
+

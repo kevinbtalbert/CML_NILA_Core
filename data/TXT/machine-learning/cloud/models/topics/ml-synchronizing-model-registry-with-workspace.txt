@@ -1,0 +1,21 @@
+Synchronizing the model registry with a workspaceCloudera Docs
+Synchronizing the model registry with a workspace
+ If you deploy a model registry in an environment that contains one or more CML
+  workspaces, you must synchronize the model registry with the workspaces.
+
+Click Model Registry to display the Model
+      Registries window.
+
+Choose the model registry you want to synchronize with the workspaces in the
+     environment.
+
+From the Actions menu, click
+     Synchronize.
+Model Registry displays the Confirm dialog box listing all of the
+     workspaces in the environment. 
+
+
+Click OK.
+
+
+Parent topic: Setting up Model Registry

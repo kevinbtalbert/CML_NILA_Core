@@ -1,0 +1,19 @@
+Fixed issues in Cloudera Data Engineering on CDP Private CloudCloudera Docs
+Fixed issues in Cloudera Data Engineering on CDP Private Cloud
+Review the list of issues that are resolved in the Cloudera Data Engineering (CDE)
+    service in the CDP Data Services 1.5.1 release.
+
+DEX-10055: Interacting with a killed session builder in CDP Private Cloud
+With this fix, the session will no longer be unresponsive.
+
+
+DEX-7513: Patching an airflow DAG keeps the total run number even though the history is
+          not retained 
+With this fix, you can view the old run logs.
+
+
+DEX-9895: DEX VC API response shows Spark version as 2.4.7
+With this fix, in CDE 1.5.1, Spark 3.2.3 is displayed as the default version in a CDE
+          Spark Virtual Cluster as expected.
+
+

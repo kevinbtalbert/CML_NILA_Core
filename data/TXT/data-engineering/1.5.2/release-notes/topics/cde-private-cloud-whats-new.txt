@@ -1,0 +1,62 @@
+What's new in Cloudera Data Engineering Private CloudCloudera Docs
+What's new in Cloudera Data Engineering Private Cloud
+This release of Cloudera Data Engineering (CDE) on CDP Private Cloud 1.5.2 includes the
+    following features:
+Creating a Git repository in Cloudera Data Engineering (Technical Preview)
+You can now use Git repositories to collaborate, manage project artifacts, and promote
+        applications from lower to higher environments. Cloudera currently supports Git providers
+        such as GitHub, GitLab, and Bitbucket. Repository files can be accessed when you create a
+        Spark or Airflow job. You can then deploy the job and use CDE's centralized monitoring and
+        troubleshooting capabilities to tune and adjust your workloads. 
+For more information, see Creating a Git repository in Cloudera Data Engineering.
+
+Using GPUs to accelerate CDE Spark jobs and sessions (Technical Preview)
+CDE supports accelerating the Spark jobs and sessions using GPUs. You can leverage the power
+        of GPUs to benefit from faster execution times and reduced infrastructure costs without
+        changing the existing CDE application code. By enabling GPU support, data engineers can make
+        use of GPU resources available to the CDE service. You can configure GPU resource quota per
+        virtual cluster which can be requested for running a Spark job or session.
+For more information, see Accelerating CDE Jobs and Sessions using GPUs.
+
+Elastic Quota for Virtual Clusters
+Elastic quota for virtual clusters is now generally available (GA). You can configure
+        elastic quota to a virtual cluster (VC) to get a minimum guaranteed and maximum capacity of
+        resources (CPU and memory) as guaranteed quota and maximum quota. The guaranteed quota
+        dictates the minimum amount of resources available for allocation for a VC at all times. The
+        resources above the guaranteed quota and within the VC’s maximum quota can be used by any VC
+        on demand if the cluster capacity allows for it. 
+Elastic quotas allow the VC to acquire unused capacity in the cluster when their guaranteed quota limit gets exhausted. This ensures efficient use of resources in the cluster. At the same time, the maximum quota limits the threshold amount of resources a VC can claim in the cluster at any given time.
+For more information, see Creating virtual clusters.
+
+Updated CDE Home page
+The new Home page of the CDE user interface has been updated with easy access to link commonly performed tasks. The new landing page now provides convenient quick-access links to create sessions and jobs, schedule a job, run an ad-hoc job, upload a DAG, build a pipeline, create new file resources and Python environment, monitor job run, and display Virtual Clusters.
+
+View Job run timeline
+You can now view the intermediate stages of the job run at every stage during its life
+        cycle in real-time. In case of a job failure, you can view the specific event and component
+        where the job run failed. This reduces turnaround time during the debugging process for the job
+        run failure. 
+For more information, see Viewing Job run timeline.
+
+Job log retention policy (Technical Preview)
+You can now configure the job log retention policy. The retention policy lets you specify how long to retain the logs and after which the logs are deleted to save storage costs and improve performance. By default, in CDE there is no expiration period and logs are retained forever. 
+For more information, see Creating virtual clusters.
+
+Support for Apache Iceberg
+Apache Iceberg 1.3 is now generally available (GA) in CDE when deployed on CDP Private
+        Cloud Base version 7.1.9 or higher. See Apache Iceberg in Cloudera Data Platform.
+ Apache Iceberg is in Technical Preview for Cloudera Data Engineering CDE when deployed on
+        CDP Private Cloud Base version 7.1.7 SP2 or 7.1.8, because interoperability requirements
+        between CDP Private Cloud Base and CDE Private Cloud are not met. Tables that are converted
+        to Iceberg Table format can only be accessed through CDE.
+
+Data Connectors
+Data connectors are is generally available (GA). Data connectors enable you to access
+        different storage using only a few configurations specific to storage. Data Connectors are
+        bound to a CDE service. 
+For more information, see Using Ozone storage with Cloudera Data Engineering.
+
+Hive Warehouse Connector tables
+Hive Warehouse Connector (HWC) tables are now supported in Spark 3 of CDE.
+
+

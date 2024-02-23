@@ -1,0 +1,16 @@
+December 15, 2023Cloudera Docs
+December 15, 2023
+Release notes and fixed issues for version 2.0.41-b238.
+Fixed Issues
+
+ENGSEC-22894 - Fixed an issue with non-admin users being unable to add or remove
+          collaborators on team projects.
+DSE-32894 - Fixed a problem with Model Registry causing the PATH variable to
+          become too long and fail. See Cloudera Customer Advisory (2023-725) for more
+          information.
+ENGSEC-23097 - Fixed an issue with CML upgrades failing when the control plane
+          scales down nodes.
+
+
+
+Parent topic: Older releases

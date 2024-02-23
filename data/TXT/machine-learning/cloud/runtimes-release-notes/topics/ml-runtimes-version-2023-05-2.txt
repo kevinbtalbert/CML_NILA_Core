@@ -1,0 +1,15 @@
+ML Runtimes Version 2023.05.2Cloudera Docs
+ML Runtimes Version 2023.05.2
+Major features and updates for ML Runtimes.
+
+This release is available with ML Runtimes version 2023.05.2.
+noteNew ML Runtime releases are automatically added
+        to the deployment, if internet connection is available.
+Fixed Issues
+
+This maintenance release is to automatically update those ML Runtimes versions that were
+          referenced with a wrong image identifier when ML Runtimes 2023.05.1 was released.
+
+
+
+Parent topic: ML Runtimes What's New

@@ -1,0 +1,10 @@
+Adding Custom ML Runtimes through the Runtime CatalogCloudera Docs
+Adding Custom ML Runtimes through the Runtime Catalog
+
+noteYou must have system administrator permission to add a new ML Runtime.
+When you open the Runtime Catalog as an administrator, you can add a new Custom
+   Runtime with the “Add Runtime” button. You can read more about building a Custom Runtime image
+   and adding to the catalog in the topic Creating Customized ML Runtimes.
+Note, that you can not add Cloudera created Runtimes through the Runtime Catalog.
+
+Related informationCreating Customized ML RuntimesParent topic: Managing ML Runtimes

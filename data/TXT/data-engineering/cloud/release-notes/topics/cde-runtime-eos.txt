@@ -1,0 +1,56 @@
+Cloudera Data Engineering Runtime end of supportCloudera Docs
+Cloudera Data Engineering Runtime end of support
+Learn about Cloudera Data Engineering (CDE) Runtime end of life support for
+  Spark.
+The following table specifies the planned end of support (EoS) policy schedule for Spark. All
+   future dates are provided for planning purposes only and are subject to change, but with the
+   expectation that dates may move later but will not move earlier. In each case, the projected EoS
+   Date can be considered to be the last day of the month specified in the table below. 
+Table 1. CDE runtime end of support information
+
+Runtime version
+End of support
+Long-term support
+Notes
+
+
+
+Spark 2.4.8 LTS
+September 2027
+Yes
+Deprecated (will only receive bug fixes and security patches)
+
+
+Spark 3.3.x LTS
+September 2027
+Yes
+None
+
+
+Spark 3.2.3 LTS
+August 2025
+Yes
+None
+
+
+Frequently Asked Questions (FAQs)
+
+
+Does CDE offer Long-term support (LTS) releases?
+CDE will offer LTS through underlying Spark runtimes. When running Spark jobs within CDE, you
+    will have the option to choose an older Spark version. Specific versions of Spark will be
+    designated LTS. This will allow you to continue running Spark jobs without any code changes.
+    Since CDE job management APIs remain backwards compatible, existing automations will not be
+    impacted.
+
+What is the EoS timeline for Spark runtimes designated LTS?
+
+Spark runtimes designated as LTS will follow the Cloudera Data Platform Private Cloud Base
+    runtime LTS policy which is typically four years. Refer to the table above for details. 
+
+What is the EOS timeline for non-LTS Spark runtimes?
+
+Spark runtimes that are not designated as LTS will follow a two year EoS policy from the date
+    they are introduced into CDE.
+
+

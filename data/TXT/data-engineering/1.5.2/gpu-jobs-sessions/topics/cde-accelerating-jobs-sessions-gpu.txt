@@ -1,0 +1,26 @@
+Accelerating CDE Jobs and Sessions using GPUs (Technical Preview)Cloudera Docs
+Accelerating CDE Jobs and Sessions using GPUs (Technical Preview)
+CDE supports accelerating the Spark jobs and sessions using GPUs. You can optionally
+    choose GPU acceleration using CDE UI or CLI for a Spark job and session. The supported Spark
+    version is Spark 3. 
+noteThis feature is in Technical Preview and not recommended for production deployments. Cloudera recommends that you try this feature in test or development environments.
+You can leverage the power of GPUs to benefit from the faster execution times and reduced
+      infrastructure costs without changing the existing CDE application code. By enabling GPU
+      support, data engineers can make use of GPU resources available to the CDE service. You can
+      configure GPU resource quota per virtual cluster which can be requested for running the Spark
+      job or session.
+Before you use GPUs to accelerate CDE jobs and sessions, you must ensure that the following
+      are performed:
+
+Have nodes with GPU and met the  Software and Hardware requirements before
+            installing CDP Private Cloud Data Services. 
+
+
+Set up GPU nodes.
+
+Test GPU node setup.
+ Set  the GPU resource quota to allocate GPU
+          resources effectively for CDE. GPU resources are limited in the cluster and usually shared
+          among all data services. 
+
+Accelerating CDE Jobs and SessionsYou can accelerate your Spark jobs and Sessions using GPUs after you add GPU resources     to the CDE service and virtual cluster. Validating your Spark job or session runAfter you run a job that utilizes the GPUs, you can verify if the GPUs were used. If     you run any SQL query, you will observe GPU Filters in the SQL query plan in the "History Server     UI" or in the Driver logs.

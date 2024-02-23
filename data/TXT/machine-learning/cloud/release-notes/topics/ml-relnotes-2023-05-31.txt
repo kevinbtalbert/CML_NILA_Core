@@ -1,0 +1,34 @@
+May 31, 2023Cloudera Docs
+May 31, 2023
+Release notes and fixed issues for version 2.0.38-H2.
+New Features / Improvements
+
+Embedding applications - CML applications can now be embedded in i-frames in
+          another domain. See Embed a CML application in an external website for more information.
+Team collaborator - It is now possible to add a team account as a collaborator on
+          a project. This feature is supported via UI as well as API. For more information, see
+          Adding project collaborators.
+Project owner - It is now possible for an administrator to change the owner of a
+          project. This feature is supported via UI as well as API. For more information, see Modifying project settings
+Load Balancer - You can now select from the environment's endpoint access gateway
+          subnets in the Subnets for Load Balancer field.
+
+
+Fixed Issues
+
+Projects (DSE-27795) - Fixed an issue where certain public projects owned by a
+          user or where the user is a collaborator were not displayed in the user's My
+            Projects view.
+Jobs (DSE-27535) - Fixed an issue so that a job can be created in disabled or paused state.
+API v2 (DSE-27463) - Added missing fields (timezone,
+          paused) to createJobRequest endpoint.
+API v2 (DSE-27442) - Fixed an issue so that files in subfolders are uploaded to
+          their respective subfolders, and not to a root directory, when using the
+          uploadFile endpoint.
+API v2 (DSE-27391) - When creating a project via API v2, the ephemeral storage
+          value is now set to NULL (instead of zero). This fixed an issue that was
+          blocking certain CDSW to CML migration workflows.
+
+
+
+Parent topic: Older releases

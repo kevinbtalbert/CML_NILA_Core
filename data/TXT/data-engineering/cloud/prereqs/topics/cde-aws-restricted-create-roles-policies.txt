@@ -1,0 +1,19 @@
+Using AWS IAM restricted roles and policies for compute and CDECloudera Docs
+Using AWS IAM restricted roles and policies for compute and CDE
+AWS IAM write permissions are used by the Cloudera Data Engineering (CDE) compute
+    infrastructure to create and delete roles and instance profiles.
+Some customers may not be willing to provide IAM write permission in the role’s policy.
+      Instead, customers can set up static pre-created roles andinstance profiles defined and used
+      by the CDE compute infrastructure to provision clusters.
+noteThe compute infrastructure is only able to use the pre-created roles
+      and instance profile if the entitlement LIFTIE_USE_PRECREATED_IAM_RESOURCES
+      is set for the tenant in use. The pre-created roles and instance profiles will continue to
+      exist for the lifetime of the cluster.
+The two main tasks for AWS IAM write permissions are the following: 
+Create roles and an instance profile.
+Create restricted IAM policies for use by the compute infrastructure.
+After the two tasks are completed, you may create a cross-account credential if
+      needed.
+See the following topics for the procedures for creating the roles and policies.
+
+Create IAM roles and instance profile pairThis step describes the role and instance profile pair that you will create and attach     to EKS master and worker instances at runtime. This step is required in customer environments     where write permissions are not provided to Cloudera Data Engineering (CDE). The roles created     here are used exclusively within the customer's account. This step needs to be performed in the     user’s AWS console.Create role and policy used to deploy CDP environments for CDEThe Cloudera Data Engineering (CDE) control plane requires a role and policies to create     CDP environments. In this step, you create a common policy for creating environments, as well as     a policy that is specific to CDE environments. 

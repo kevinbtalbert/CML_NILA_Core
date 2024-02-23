@@ -1,0 +1,15 @@
+Adding new ML RuntimesCloudera Docs
+Adding new ML Runtimes
+CML provides two ways to add new Runtimes to the Runtime Catalog.
+noteYou must have system administrator permission to add a new ML Runtime.
+
+Adding Custom ML Runtimes through the Runtime Catalog Create your own Custom ML Runtime
+     and add it through the Runtime Catalog
+Adding ML Runtimes using Runtime Repo files Host a file from where CML will automatically
+     pull in new ML Runtimes and add them to the Runtime Catalog.
+
+When adding Runtimes from a third party repository, you might need to add Docker credentials
+   and certificates to CML. See more on the Add Docker registry credentials and
+    certificates page. 
+
+Related informationAdd Docker registry credentials and certificatesParent topic: Managing ML Runtimes

@@ -1,0 +1,48 @@
+Spark GPU Runtime ImagesCloudera Docs
+Spark GPU Runtime Images
+The Cloudera Spark GPU Runtime uses the "nvidia/cuda" option as a base image. The Spark
+    RAPIDS is built against Cloudera Spark distribution and is compatible with the Spark version
+    that Cloudera offers.
+
+The following table provides information about the Spark GPU Runtime images. 
+
+
+
+Type
+CDP Base version
+CUDA Version
+Base Image
+Spark GPU Runtime
+
+
+
+Job
+7.1.7
+CUDA 12.1.1
+nvidia/cuda:12.1.1-base-ubi8
+dex-spark-runtime-gpu-3.2.3-7.1.7.2035:1.20.1-b48
+
+
+Job
+7.1.9
+CUDA 12.1.1
+nvidia/cuda:12.1.1-base-ubi8
+dex-spark-runtime-gpu-3.3.2-7.1.9.0:1.20.1-b48
+
+
+Session
+7.1.7
+CUDA 12.1.1
+nvidia/cuda:12.1.1-base-ubi8
+dex-livy-runtime-gpu-3.2.3-7.1.7.2035:1.20.1-b48
+
+
+Session
+7.1.9
+CUDA 12.1.1
+nvidia/cuda:12.1.1-base-ubi8
+dex-livy-runtime-gpu-3.3.2-7.1.9.0:1.20.1-b48
+
+
+
+Parent topic: Using GPUs in Cloudera Data Engineering (Technical Preview)

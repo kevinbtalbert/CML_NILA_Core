@@ -1,0 +1,34 @@
+Setting up access for Model Registry in a RAZ-enabled environmentCloudera Docs
+Setting up access for Model Registry in a RAZ-enabled environment
+In a RAZ-enabled environment you need to set up the S3-Ranger policy by manually adding
+  the machine user name in the S3 Ranger policy.
+To set up the S3-Ranger policy, complete the following:
+
+On the Models Registry Details page, find and copy the Machine User
+    Workload User Name in the Machine User Workload User Name field.For
+     example, in the following screenshot, the Machine User Workload User
+      Name field contains srv_cml_env_machine_user_82a49. Copy the
+      Machine User Workload User Name which is 82a49.
+
+
+
+Go to the Ranger UI in the Datalake of the environment. 
+
+
+Depending on your environment, select cm_s3 (AWS) or
+     cm_adls (Azure). 
+
+
+Go to the policy named all - bucket, path which controls the access to
+    the object store bucket.
+
+
+Enter the Machine User Workload User Name in the Select
+     User field in the allow conditions section. For example,
+     using the Machine User Workload User Name from Step 2, add the value which is
+      82a49.
+
+
+
+
+Parent topic: Setting up Model Registry

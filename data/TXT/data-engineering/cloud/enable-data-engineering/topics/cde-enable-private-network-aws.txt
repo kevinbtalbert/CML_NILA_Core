@@ -1,0 +1,30 @@
+Enabling a semi-private network for a CDE service with AWS (Tech Preview)Cloudera Docs
+Enabling a semi-private network for a CDE service with AWS (Tech Preview)
+Learn how to enable a semi-private network setup for a Cloudera Data Engineering (CDE)
+    service with Amazon Web Services (AWS) services in Cloudera Data Platform (CDP). When you enable
+    a CDE service with this feature, the Amazon Kubernetes Service (EKS) cluster is deployed as a
+    private cluster but some services used by CDE such as MySQL and S3 are not provisioned as
+    private.
+noteYou need to contact Cloudera to have this feature
+      enabled.
+CDE UICDP CLI
+Before you begin
+
+Ensure that you have created and enabled a CDE service. Additionally, the Cloudera Data
+      Platform (CDP) must communicate with the CDE service on a private network in order to manage
+      the CDE service lifecycle. This communication occurs using the Cluster Connectivity Manager
+      (CCM) v2; therefore, to enable this feature, the CDP environment must be enabled with the
+      CCMv2. Once the CCMv2 is enabled at the CDP environment level, the Enable Private
+        Network option displays in the CDE user interface when you enable a service. For
+      more information on how to enable a CDE service and set up CCMv2, refer to the links
+        below.
+UI steps for enabling a private network
+
+While enabling a CDE service for an AWS environment, under Network & Storage,
+       select Enable Private Network.
+Click Enable.
+You can enable a private network with the CDP CLI with the following commands:
+            cdp de enable-service --name dsp-private-eks-ntp-try1 --env dsp-aws-ntp-priv --instance-type m5.2xlarge --minimum-instances 0 --maximum-instances 4 --initial-instances 0 --root-volume-size 50 --no-skip-validation --enable-private-network
+
+Related informationEnabling a CDE serviceCluster Connectivity Manager (CCM)Enabling Cluster Connectivity Manager (CCM) in the Management
+              ConsoleParent topic: Enabling a Cloudera Data Engineering service

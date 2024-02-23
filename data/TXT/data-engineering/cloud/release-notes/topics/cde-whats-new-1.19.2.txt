@@ -1,0 +1,24 @@
+June 29, 2023Cloudera Docs
+June 29, 2023
+This release (1.19.2) of the Cloudera Data Engineering (CDE) service on CDP Public Cloud
+  introduces the following changes.
+Kubernetes update
+CDE now supports K8s 1.25 for Azure and Amazon Web Services (AWS).
+
+Support for new AWS region
+CDE now supports the EU Milan region for AWS.
+Support for user defined routing (UDR)
+CDE now supports UDR when you enable a CDE service for Azure. For more information,
+    see Enabling a Cloudera Data Engineering service.
+
+Support for more AMD instances
+CDE now includes more AMD instances for the Workload Type drop-down menu when you
+    enable a CDE service.
+
+Workload Secrets
+CDE now provides a secure way to create and store workload secrets for Cloudera Data
+    Engineering (CDE) Spark Jobs. This is a more secure alternative to storing credentials in plain
+    text embedded in your application or job configuration. For more information, see Managing workload secrets with CDE Spark Jobs using the API.
+
+
+Parent topic: What's new in Cloudera Data Engineering Public Cloud?

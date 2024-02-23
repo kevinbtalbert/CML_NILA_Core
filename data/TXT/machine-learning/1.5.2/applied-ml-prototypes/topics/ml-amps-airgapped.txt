@@ -1,0 +1,48 @@
+AMPs in airgapped environmentsCloudera Docs
+AMPs in airgapped environments
+In an airgapped installation, the default AMPs catalog included at installation and
+  default AMPs may be inaccessible. There are a few options to work around this issue.
+Option 1: Set up a proxy with AMPs public endpoints whitelisted 
+Set up a proxy and whitelist the public endpoints listed in Host names required by AMPs.
+
+Option 2: Clone AMPs catalog and projects internally and configure the CML workspace to
+    use their internal catalog 
+
+
+Clone the AMPs catalog repository to local: https://github.com/cloudera/Applied-ML-Prototypes.noteCatalog links must be https, not http.
+Clone all the git projects mentioned in the git_url fields in https://github.com/cloudera/Applied-ML-Prototypes/blob/master/amp-catalog-cloudera-default.yaml.
+Update the git_url and image_path links to
+      point to your local internal github repository clones (from Step 2) in local
+       amp-catalog-cloudera-default.yaml (from Step 1).
+Update the AMPs catalog in the CML workspace to point to the local
+       amp-catalog-cloudera-default.yaml (from Step 1). Follow the steps in
+       Add a catalog.
+Complete the steps in Accessing python packages required by AMPs on airgapped setups
+       (see below).
+
+
+
+Option 3: Download the desired AMPs in a zip file and upload it as a CML project
+
+
+Browse the AMPs catalog page and go to the github project associated with the AMP: https://cloudera.github.io/Applied-ML-Prototypes/#/.noteCatalog links must
+              be https, not http.
+Download the AMP project as zip file.
+Go to CML workspace and create a project by choosing file upload method and providing the
+      above AMP zip file.
+Complete the steps in Accessing python packages required by AMPs on airgapped setups
+       (see below).
+
+
+
+Accessing python packages required by AMPs on airgapped setups 
+You must whitelist or allow traffic to the public pypi repository to install python packages
+    required for AMPs to successfully deploy.
+*.pypi.org
+*.pythonhosted.org
+
+If you do not want to allow access to these domains from your environment, you must host your
+    internal pypi repository and upload all the necessary pip packages used by AMPs and configure
+    your cluster to use the internal pypi as default.
+
+

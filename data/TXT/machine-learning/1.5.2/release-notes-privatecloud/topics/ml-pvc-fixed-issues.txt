@@ -1,0 +1,30 @@
+Fixed IssuesCloudera Docs
+Fixed Issues
+This section lists issues fixed in this release of Cloudera Machine Learning on Private
+  Cloud.
+
+
+DSE-28066: Port conflict on Single Node
+
+CML UI shows timeout error during upgrade on a single node cluster because of an underlying
+      port conflict error: 1 node(s) didn't have free ports for the requested pod
+       ports.
+This issue has been fixed.
+
+
+
+DSE-27283: Pod evaluator should not use hostNetworking on Azure and
+     Private Cloud
+
+CML workspace Pod Evaluator used host networking which could cause HA issues and deployment
+      failures owing to port conflicts.
+The issue has been fixed.
+
+
+
+DSE-28005: Environment variables hidden on Application>Settings page
+Previously, environment variables were not visible or modifiable on Application's settings
+      page.
+The issue has been fixed.
+
+

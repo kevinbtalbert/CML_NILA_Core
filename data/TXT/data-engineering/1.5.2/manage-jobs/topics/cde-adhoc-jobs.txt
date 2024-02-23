@@ -1,0 +1,40 @@
+Creating an ad-hoc job in Cloudera Data EngineeringCloudera Docs
+Creating an ad-hoc job in Cloudera Data Engineering
+Ad-hoc runs mimic the behavior of the traditional spark-submit or a single execution
+  of an Airflow DAG, where the job runs once. These runs will not establish a permanent job
+  definition. You can use the ad-hoc job runs for log analysis and future
+  reference.
+Before you begin
+
+Ensure that you have a Virtual Cluster that is ready to use.
+
+Spark jobs
+
+In the Cloudera Data Platform (CDP) console, click the Data
+       Engineering tile. The Home page displays.
+Click See More under Deploy  and select
+              Ad-Hoc Run. The Create an Ad-Hoc Spark
+              Job dialog box is displayed.
+Select a Virtual Cluster.
+Enter a Job Name.
+In the Select Application Files drop-down list, select
+              Resource and upload or select the resource or
+              URL and enter the URL that contains the file or
+              Repository and select a file from the repository and the file
+            will be automatically added to the job.
+Enter a Main Class.
+Enter Arguments and Configurations.
+Select a Python Environment.
+Select a Data Connector.
+
+Steps for advanced options
+You can upload additional files, customize the number of executors, drivers, executor cores,
+    and memory. 
+Upload files and resources.
+Configure Compute options.
+Set an option for Log Level.
+Click Enable GPU Accelerations checkbox to enable the GPU
+            acceleration and configure selectors and tolerations if you want to run the job on
+            specific GPU nodes. 
+Click Create and Run.
+

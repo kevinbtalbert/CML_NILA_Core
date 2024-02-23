@@ -1,0 +1,15 @@
+Viewing registered model informationCloudera Docs
+Viewing registered model information
+
+
+From the Projects page in CML, select Model
+     Registry from the navigation pane. On the main Model
+     Registry page, you can see all the models currently registered, their respective
+    owners, location of creation, and the last updated time, if known.
+Select a registered model to see its description. CML displays the
+      Details page which outlines the model description, ID, owner, and
+     versions. Different versions of the same model can be deployed in the workspace.
+
+
+
+Parent topic: Registering and deploying models with Model Registry

@@ -1,0 +1,18 @@
+September 14, 2023Cloudera Docs
+September 14, 2023
+This release (1.19.3) of the Cloudera Data Engineering (CDE) service on CDP Public Cloud
+  introduces the following changes.
+Support for Spark 3.3 runtimes
+CDE supports Spark 3.3. Note that Spark 3.3.0 is supported on Data Lake 7.2.15. For more
+    information, see Cloudera Data Engineering and Data Lake
+    compatibility.
+
+Support for semi-private network for AWS and fully private network for AKS
+    (Preview)
+CDE now supports semi-private network for Amazon Web Services (AWS) and fully
+    private network Azure Kubernetes Service (AKS) with Cluster Connectivity Manager v 2 (CCMv2).
+    For more information, see Enabling a Cloudera Data Engineering service, Enabling a semi-private network on AWS, Enabling a fully private network for a CDE service for Azure
+     (Preview), and Cluster Connectivity Manager.
+
+
+Parent topic: What's new in Cloudera Data Engineering Public Cloud?

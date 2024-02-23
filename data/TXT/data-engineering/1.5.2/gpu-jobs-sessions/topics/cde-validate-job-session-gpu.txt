@@ -1,0 +1,31 @@
+Validating your Spark job or session runCloudera Docs
+Validating your Spark job or session run
+After you run a job that utilizes the GPUs, you can verify if the GPUs were used. If
+    you run any SQL query, you will observe GPU Filters in the SQL query plan in the "History Server
+    UI" or in the Driver logs. Spark JobSessions
+You can check if the GPUs were utilized in the Job run using the SQL query.
+
+In the Cloudera Data Platform (CDP) console, click the
+
+              Data Engineering tile. The CDE Home page
+            displays.
+Click Jobs Runs on the left navigation menu. The Job
+              Runs page displays. 
+Click on the job Run Id of the job which utilized GPU. 
+Click the Spark UI tab and click SQL. The
+            SQL plan is displayed which shows that the job has utilized the GPUs. noteThis GPU details  appears only if the job utilizes the GPU.
+
+              Otherwise, job requests for GPU but never utilizes it. 
+
+
+You can check if the GPUs were utilized by creating a session with Scala type. Open a
+          session terminal and execute the below sample Scala
+          code.val df = spark.sparkContext.parallelize(Seq(1)).toDF()
+df.createOrReplaceTempView("df")
+spark.sql("SELECT value FROM df WHERE value <>1").show
+spark.sql("SELECT value FROM df WHERE value <>1").explain
+This should output a SQL plan with GPU Filter as below.
+
+
+
+Parent topic: Accelerating CDE Jobs and Sessions using GPUs (Technical Preview)

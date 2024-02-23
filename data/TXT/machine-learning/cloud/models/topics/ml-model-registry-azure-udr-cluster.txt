@@ -1,0 +1,44 @@
+Creating a Model Registry on an Azure UDR Private ClusterCloudera Docs
+Creating a Model Registry on an Azure UDR Private Cluster
+Use the following template CDP CLI command to create a UDR private cluster on Azure with
+  a Model Registry.
+You must replace the following template items with your own information.
+
+<environment CRN>
+<environment name> (in two places)
+<existing NFS name>
+<subnet>
+
+Model registries are also supported on Azure private clusters with UDR. For more information
+   about UDR, see the Preview Feature documentation.
+If you have not yet downloaded the CDP CLI tool, see the 
+   documentation.
+The required CDP CLI version is version 0.9.93 or higher.
+CDP CLI command to create a Model Registry
+This CDP CLI command performs has three key sections:
+
+Enables support for private clusters in Azure ( "privateCluster": true, )
+Enables UDR for the private cluster ("outboundTypes": ["OUTBOUND_TYPE_UDR"],)
+Specifies the subnet for the UDR-enabled private cluster ("subnets")
+
+cdp ml create-model-registry --cli-input-json {
+    "environmentCrn": "<environment CRN>",
+    "environmentName": "<environment name>",
+    "privateCluster": true,
+    "usePublicLoadBalancer": false,
+    "outboundTypes": [
+        "OUTBOUND_TYPE_UDR"
+    ],
+    "provisionK8sRequest": {
+        "network": {
+            "topology": {
+                "subnets": [                     
+                  "<subnet>" # subnet with a default route configuration to forward the traffic to the network appliance or firewall. This is required to enable UDR.
+                ]
+            }
+        }
+    }
+}
+
+
+Parent topic: Setting up Model Registry

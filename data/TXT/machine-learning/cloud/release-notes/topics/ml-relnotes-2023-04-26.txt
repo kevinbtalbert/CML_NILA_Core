@@ -1,0 +1,52 @@
+April 26, 2023Cloudera Docs
+April 26, 2023
+Release notes and fixed issues for version 2.0.38.
+New Features / Improvements
+
+Custom Data Connections - Site administrators can now configure access to
+          external data sources with the new Custom Data Connections feature. Data Scientists
+          can access the external data via the cml.data library and its 2-liner
+          abstractions.
+Add Data - Data Scientists can now upload files to Hive and Impala Virtual
+          Warehouse tables from the Data tab of any CML Project.
+Model Replicas - Site Administrators can now configure the maximum number of
+          model replicas that users can select for their models via the Maximum Model Replicas field
+          on the Administration → Settings → Model Deployment Settings page.
+Models - Users can now deploy large ML models. Model size is not limited to 50 MB
+          anymore.
+Model Registry - Administrators can now find the Machine User Workload User Name
+          that is needed for configuring their model registries to access their S3 or ADLS Gen2
+          bucket on the Workspace Details page.
+Install Workspaces (Tech Preview) - Auto-retriable workflow for Install Workspace
+          for Azure Private Cluster. See the Feature Preview doc for more information.
+Usage Monitoring - Usage data for Spark Executors is now recorded in the CSV file
+          that Site Administrators can download from the Administration > Usage tab.
+API Keys - Improved security by storing Legacy API keys as hashes in the
+          database. Existing Legacy API keys are automatically rotated as part of the upgrade
+            process to ensure that previous keys cannot be used. API v1 keys will not be usable
+          after the upgrade. This does not impact the Models API, and Models authentication is not
+          affected. To manually rotate a Legacy API key, do the following: 
+In User Settings > API Keys, click Rotate to generate a new Legacy ApiKey
+              and ApiKeyHash pair.
+Copy the Api Key that is shown after rotation and use it in future requests.
+Note - The API key will not be visible on the UI once you refresh the page. Make
+              sure to copy it before leaving the page.
+
+Modify Instance Group Type - Administrators can easily change the CPU or GPU instance types of
+          node groups for a CML workspace, without having to re-provision the workspace.
+
+
+Fixed Issues
+
+Model Registry (DSE-25909) - Removed the 19 character limit for model names in
+          Model Registry.
+Model Registry (DSE-25641) - Fixed an issue where redeploying models from model
+          registry to a CML workspace may fail.
+Model Registry (DSE-24683) - Added workload name to Model Registry service
+          account list.
+Model Registry (DSE-25906) - Model Registry is no longer limited to listing 10
+          models at a time.
+
+
+
+Parent topic: Older releases

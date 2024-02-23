@@ -1,0 +1,19 @@
+Activating Python environment resourcesCloudera Docs
+Activating Python environment resources 
+Airflow-related deployments must be configured to use the new Python environment and
+    have to be restarted to use the newly created Python environment.
+noteOnly one Python environment can be active at one time. This command restarts the Airflow
+          services. You must ensure that no jobs are running when activating the Python
+          environment.
+The Python resource must be in the Ready state after you upload. You can
+      check the resource status using the cde resource list-events --name
+        $RESOURCE_NAME command.
+After you upload the resource, activate the environment to use it in the Airflow
+          jobs.
+
+cde airflow activate-pyenv --pyenv-resource-name $RESOURCE_NAME 
+You can check if the resource is activated using the cde airflow
+              get-active-pyenv command.
+
+
+Parent topic: Creating a custom Airflow Python environment (Technical Preview)

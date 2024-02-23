@@ -1,0 +1,15 @@
+OverviewCloudera Docs
+Overview
+Quota management enables you to control how resources are allocated within your CML
+  workspace.
+In order to prevent a single session, job, or other workload from consuming all of
+      the available cluster resources, you can limit the number of CPUs and memory allocated by
+      user, business units, or Data Service by defining resource pools that define resource limits. 
+Pools are organized in a hierarchical manner by defining nodes in the hierarchy with
+   resource limits.
+In technical preview (TP) release, administrators should create at least one
+        resource pool under ‘root.default’ for CML, not use ‘root.default’ for creating
+        workspace.
+The new quota management cannot be enabled for an existing workspace. CML
+    administrators should provision a new workspace to enable and test this feature.
+

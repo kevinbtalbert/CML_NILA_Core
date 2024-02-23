@@ -1,0 +1,21 @@
+Viewing logs for Cloudera Data Engineering SessionsCloudera Docs
+Viewing logs for Cloudera Data Engineering Sessions
+Once a Session is created in Cloudera Data Engineering (CDE), you can view logs of the
+    Spark driver and executors from the Session.
+
+In the Cloudera Data Platform (CDP) console, click the Data
+            Engineering tile. The Home page displays.
+
+Click Sessions in the left navigation menu.
+
+Click the Session name that you want to view the logs for.
+
+Click the Logs tab.
+
+In the Select Log Type drop-down, select the
+            Driver or Executor that you want to view
+          the logs for.
+
+Click Download All Logs to save your log files.
+
+

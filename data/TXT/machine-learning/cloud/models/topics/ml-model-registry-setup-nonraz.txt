@@ -1,0 +1,20 @@
+Setting up access for Model Registry in a non-RAZ-enabled environmentCloudera Docs
+Setting up access for Model Registry in a non-RAZ-enabled environment
+In a non-RAZ-enabled environment you need to add the Machine User CRN to the IDBroker
+  mapping in order to access the S3/ADLS buckets.
+To add the Machine User CRN to the IDBroker mapping complete the following:
+
+Locate the Machine User CRN in the Model Registry
+     Details page. 
+
+
+Copy the entire Machine User CRN mapping.
+Navigate to the Environment > Manage access > idbroker page and add or choose the
+     Machine User CRN mapping to the Data Access Role
+    field.
+Click Save and Sync. 
+
+
+
+
+Parent topic: Setting up Model Registry

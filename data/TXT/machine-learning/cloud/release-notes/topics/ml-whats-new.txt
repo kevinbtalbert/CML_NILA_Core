@@ -1,0 +1,124 @@
+What's NewCloudera Docs
+What's New
+Major features and updates for the Cloudera Machine Learning data service.
+
+February 20, 2024
+Release notes and fixed issues for version 2.0.43-b229.
+Fixed Issues
+
+DSE-33078 - Upgraded Go version to address CVE-2023-45285 and CVE-2023-39325.
+DSE-34663, DSE-34635 - Upgraded Grafana version and
+            kube-state-metrics:v1.9.3 image to address critical CVEs.
+DSE-32001 - Upgraded thunderhead components (tgtgenerator,
+            tgtloader and configtemplate) to include CVE fixes
+          that were carried out in thunderhead.
+DSE-34595 - Upgraded zookeeper version to address CVE-2023-44981.
+
+
+
+
+February 8, 2024
+Release notes and fixed issues for version 2.0.43-b220.
+New Features / Improvements
+
+AMPs - The AMPs page has been upgraded to render images, make the UI more
+          reactive and improve the overall experience.
+Azure - Added Azure Qatar Central region as a supported instance type.
+
+
+Fixed Issues
+
+DSE-33041 - Fixed a bug in API v2 to ensure that cron jobs created via API v2 are
+          now adding the schedule correctly and not resulting in multiple instances of jobs running
+          at any given moment.
+DSE-33793 - Fixed an issue in the UI to ensure that users are able to select the
+          ‘Scala’ kernel while creating a new runtime.
+DSE-34166 - Made a change to ensure that auto-generated CML model sample code
+          shown in the UI is not missing a quote.
+DSE-33082 - Upgraded the Go version to address CVEs: CVE-2023-45285 and
+          CVE-2023-39325.
+DSE-34080 - Upgraded the UBI base images in CDSW to address multiple CVEs.
+DSE-33598 - Ensure that the error message about a missing workload password when
+          JWT authorization is disabled is shown in the UI.
+DSE-34088 - Made a change to the renderSpark UI Executor Logs.
+
+
+
+
+January 23, 2024
+Release notes and fixed issues for version 2.0.43-b208.
+New Features / Improvements
+
+Cloudera Data Warehouse - Automatic JWT-based authentication enables passwordless
+          connectivity to CDW. Users do not need to use their workload password to query data from
+          CML. This feature depends on Data Lake 7.2.18, please upgrade your environment when the
+          new version is available.
+Redesigned AMP Catalog - The AMPs pane is redesigned to improve navigation and
+          search capabilities.
+HuggingFace Spaces - A curated list of HuggingFace Spaces is available in the
+          AMPs Catalog.
+Community AMPs - A selected list of community-created AMPs is available to run in
+          CML in the AMPs pane.
+Azure - Support for new GPU instances: NVadsA10 v5-series (non-fractional)
+Azure - Certificate based authentication using Managed Identity to provision in
+          AKS.
+AWS - Support for new GPU instances: g5
+AWS - Deprecated support for P2 instance types.
+AWS - Added support for CML workspaces in af-south-1, Africa
+          (Cape Town) region.
+Kubernetes - Kubernetes version 1.27 is supported on both Azure and AWS.
+Restore workflow - Improved reliability of the workspace restore workflow.
+Private DNS Zone - CML now certified to work with private DNS zones.
+Project Migration tool - A command line argument is added to check if source and
+          destination files are the same, covering job, app, model, project data and metadata
+          files.
+Runtimes - The R version of cmladdon is upgraded to version
+          4.3.1.
+Runtimes - The HadoopCLI 7.2.17.100 Runtime Addon is released for the Public
+          Cloud.
+Runtimes - ML Users can now register custom ML Runtimes. A new site-level
+          configuration option has been introduced on the Site Administration page to enhance
+          runtime registration capabilities: 
+Admins can enable a configuration option, granting users the capability to
+              register runtimes.
+The new option is disabled by default, ensuring that existing permissions remain
+              unchanged.
+With this update, we've implemented a mechanism to record the names of the users
+              who register ML Runtimes, displayed on the Runtime Catalog Page.
+Users now can add runtimes however, it's important to note that they are not
+              permitted to deprecate/disable the added runtimes.
+
+Runtimes - We have introduced a new button in the Site Administration > Runtime tab, where users are now able to update the Runtimes catalog at any time
+          based on runtime repos.
+Runtimes - On the Project creation page: 
+Renamed the Runtime setup section to
+            Runtime.
+Updated the UI for Basic/Advanced option selection.
+Modified basic configuration settings.
+Added GPU-enabled runtime variant by default.
+
+Security - When adding project collaborators or team members, non-admins can be
+          prevented from seeing the entire user list. This functionality can be restricted to Site
+          Admins in Site Administration > Security by selecting Allow all authenticated users to access
+            /api/v1/users endpoint.
+Teams - The ownership structure for team creation is changed. Previously, the
+          creator of a team was assigned the role of Owner. Now, the creator
+          is assigned the role of Admin by default. Admins have the authority
+          to add team members, including other admins. Each team must have at least one admin to
+          manage the team.
+
+
+Fixed Issues
+
+DSE-33545 - Fixed an issue where workspace shows as Ready even
+          if workspace URL is returning 404.
+DSE-24423 - In Network Settings of a Workspace, removing last remaining allowed
+          source IP range for Load Balancer throws error
+DSE-27910 - Fixed an issue where evicted pods caused CML backup to fail.
+DSE-23954 - Fixed a problem where load balancer subnet preflight validation is
+          skipped if no load balancer is specified during workspace creation.
+DSE-23953 - Fixed a problem where worker subnet validation is skipped if no load
+          balancer is specified during workspace creation.
+
+
+

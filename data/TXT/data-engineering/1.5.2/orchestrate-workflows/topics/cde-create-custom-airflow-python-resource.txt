@@ -1,0 +1,27 @@
+Creating a custom Airflow Python environment resourceCloudera Docs
+Creating a custom Airflow Python environment resource
+Create the custom Airflow Python environment resource. You can specify the
+      pip repositories if required.Download and configure the CDE CLI.
+ Create a custom Airflow Python environment resource.
+
+cde resource create --name $RESOURCE_NAME --type airflow-python-env
+For example:
+cde resource create --name airflow-1 --type airflow-python-env 
+
+[Optional] You can specify the custom pip repository using the
+            --pip-repository-url <custom-pip-repository-url> --pip-repository-cert
+              <path-to-pem-file> option in the create resource command.
+[Optional] You can specify one or more extra custom pip repositories using the
+            --extra-pip-repository-<number>-url
+              --<custom-pip-repository-url>-<number>-cert <path-to-pem-file>
+            option in the create resource command. You can specify up to 10 extra pip
+            repositories.
+
+Example of command with pip repository and extra pip
+          repository:cde resource create --name airflow-custom-pip-repos --type airflow-python-env --pip-repository-url https://pypi.example.com/simple --pip-repository-cert cert.pem --extra-pip-repository-1-url https://extra-pypi.example.com/simple --extra-pip-repository-1-cert extra-cert.pem
+CDE builds the environment according to the requirements.txt file.
+          During this build time, you cannot run a job associated with the environment. You can check
+          the status of the environment by running the cde resource list-events --name
+            $RESOURCE_NAME command. 
+
+Using credentials for custom pip repositoriesYou can use specific credentials for your custom pip repositories. You can create a     credential of type basic and use it when creating a Python environment     resource. You must use this credential name to authenticate against the pip repository for the       python-env or airflow-python-env resource.CDE CLI custom Airflow Python environment flag referenceYou use the following optional flags when creating an Airflow Python     environment.Parent topic: Creating a custom Airflow Python environment (Technical Preview)

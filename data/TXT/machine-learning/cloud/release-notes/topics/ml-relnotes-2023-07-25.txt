@@ -1,0 +1,89 @@
+July 25, 2023Cloudera Docs
+July 25, 2023
+Release notes and fixed issues for version 2.0.40.
+New Features / Improvements
+
+CML Home - A new landing experience that helps you to jump to your most recent
+          Projects, walks you through the key capabilities of the platform and keeps you up-to-date
+          with the latest developments.
+3rd-party editor support - The PBJ architecture adds support for 3rd party
+          editors, enabling building custom ML Runtimes from scratch with JupyterLab, RStudio, and
+          other editors of your choice.
+Models - Models can now be deployed from the model registry to CML workspaces
+          using API v2.
+Kubernetes - Kubernetes 1.26 support is available for Azure.
+Model Registry (Preview) - Model Registries can now be deployed on an Azure
+          private cluster.
+CML Scalability - CML Control Plane flows have been verified for 100-node
+          clusters and high volume workloads are now enabled by default.
+Project Migration - Support for project export and import from CDSW to CML public
+          or private cloud environments, or for migration between development and production
+          environments.
+Retry Install Workspace - Workflow-based support for retry of CML workspace
+          creation, in the event workspace installation fails.
+Preflight Checks for Instance Groups - Pre-flight checks are run when an instance
+          group is being modified to ensure the requested configuration is valid."
+Preflight Checks for Update Workspace - Pre-flight checks are run when a
+          workspace update is being requested to ensure the requested change is valid.
+SDX - SDX 7.2.17 has been integrated and verified with CML.
+Runtimes - On the New Project page, CML code now defaults to the Python 3.9 ML
+          Runtime Edition.
+HadoopCLI - The DL versions of HadoopCLI 7.2.8, 7.2.10 and 7.2.11 Runtime-Addon
+          versions on Public Cloud reached End of Support and have been removed.
+Job notifications - All email-related control will be hidden by job creation or
+          job settings if the SMTP host is not configured. If email recipients have been added
+          previously to the job but the SMTP host is not configured, the Job Notifications section
+          will be displayed as a warning message, informing the user of the problem.
+Project - Site administrators can now restrict project creation for users and/or
+          teams.
+Environment variables - Users can now hide the values of sensitive environment
+          variables on the Account/Project/Workload/Workspace level.
+
+
+Fixed Issues
+
+Upgrade workspace (DSE-28827) - Fixed an issue where after upgrading a workspace,
+          the workspace (such as instance type and autoscale range) could not be modified.
+Pod (DSE-28771) - Fixed an issue where the health-poller pod was crashlooping due
+          to a missing UMS_HOST environment variable.
+Workspaces (DSE-28595) - Fixed an issue where workspaces with static subdomains
+          would not register freeIPA DNS entries were not added correctly, for both created and
+          restored workspaces.
+Installation (DSE-28160) - Fixed an issue where an installation is not marked
+          ‘Fail’ when it has timed out for 3 hours. This happened on Azure private cluster (UDR)
+          installations.
+Installation (DSE-28047) - Fixed an issue where when a failed installation on
+          Azure is retried, pre-install validations are not performed again, which can lead the
+          installation to eventually time out. 
+Environmental variables (DSE-28005) - Fixed an issue where environment variables
+          were not visible or modifiable on an application’s settings page.
+CML Service Link (DSE-28072) - This change enables users to use the CML Service
+          Link on the project session pages started either with Workbench or with the remote
+          editor.
+Workspace details (DSE-27891) - Fixed an issue where Workspace Details shows some
+          incorrect information (Creator, User, Workspace tags) when the workspace is created via a
+          machine user. 
+Project (DSE- 27516) - Fixed an issue where project creation in a workspace on
+          Azure was failing due to an NFS error.
+Retry Install Workspace (DSE-26944) - Improved the language in the Retry Install
+          Workspace modal.
+Preflight (DSE-26752) - Improved the instance preflight failure message to
+          mention that validation is not skippable.
+Spark addons (DSE-26269) - Fixed an issue where deleted and failed Spark Addons
+          appeared on New/Modify Workload pages as selectable Addon.
+CDP CML (DSE-26012) - Prefix and update all workload usage events with
+          CDPCML.
+CML consumption (DSE-25951) - Made improvements to issues that caused
+          discrepancies in measurement of CML consumption.
+Status icon on Runtime Catalog Page (DSE-24589) - This change enables users to
+          find out if there is at least one runtime among the runtime variants with the enabled
+          status.
+PBJ Workbench (DSE-21770) - In PBJ Workbench Sessions, history navigation (with
+          UP key) is working now, and users are able to navigate to previously executed commands
+          with this key.
+GPU (DSE-29159) - Fixed an issue where P4d.24xlarge GPU is
+          displayed as a CPU, not GPU.
+
+
+
+Parent topic: Older releases

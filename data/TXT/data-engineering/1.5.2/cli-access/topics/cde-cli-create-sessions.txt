@@ -1,0 +1,31 @@
+Creating a Session using the CDE CLI [Technical Preview]Cloudera Docs
+Creating a Session using the CDE CLI [Technical Preview]
+The cde session create command allows you to create a new
+    Session.
+
+Run the following command in the CDE CLI: 
+
+cde session create --name <session-name> --type <pyspark/spark-scala>
+
+You can enable the GPU acceleration using
+                the[--enable-gpu-acceleration] flag during the spark session creation.cde session create --name test-session --type spark-scala \
+--enable-gpu-acceleration
+To accelerate session queries on specific hardware, you can use
+                    [--executor-node-selector "nvidia.com/gpu=A100"] and
+                    [--executor-node-toleration "nvidia.com/gpu=true"] options to
+                  configure selectors and tolerations if you want to run the job on specific GPU
+                  nodes. You can only provide executor node selectors and tolerations, as GPUs are
+                  used by executors only. The selector and
+                    tolerations CLI options are optional. You can use either one or
+                  both in congestion with --enable-gpu-acceleration flag.For
+                    example:cde session create --name test-session --type spark-scala \
+                    --enable-gpu-acceleration \
+                    --executor-node-selector "nvidia.com/gpu=A100" \
+                    --executor-node-toleration "nvidia.com/gpu=true"
+
+
+
+
+
+
+Parent topic: Managing Sessions in Cloudera Data Engineering using the CLI

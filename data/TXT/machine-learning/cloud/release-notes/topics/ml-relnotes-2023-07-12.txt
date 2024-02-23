@@ -1,0 +1,11 @@
+July 12, 2023Cloudera Docs
+July 12, 2023
+Release notes and fixed issues for version 2.0.38-H3.
+Fixed Issues
+
+Team Sync (DSE-29009) - Fixed an issue where Team Sync did not work in AWS regions
+          other than us-west-1.
+
+
+
+Parent topic: Older releases

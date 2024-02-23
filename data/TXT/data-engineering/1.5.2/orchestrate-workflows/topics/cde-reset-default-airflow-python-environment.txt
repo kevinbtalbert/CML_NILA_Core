@@ -1,0 +1,13 @@
+Resetting to the default Airflow Python environmentCloudera Docs
+Resetting to the default Airflow Python environment  
+You can reset the Python environment to the default Airflow Python environment
+    resources.
+noteThis resets the Airflow services. You must ensure that no jobs are running when resetting the
+          Python environment.
+
+Reset your Python environment to use the default environment.
+
+cde airflow reset-pyenv  
+
+
+Parent topic: Creating a custom Airflow Python environment (Technical Preview)

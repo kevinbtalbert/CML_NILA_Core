@@ -1,0 +1,48 @@
+October 19, 2023Cloudera Docs
+October 19, 2023
+Release notes and fixed issues for version 2.0.41-b225.
+New Features / Improvements
+
+Model Registry - Model Registry is now GA. Model Registry is the core enabler for
+          MLOps, or DevOps for machine learning. For more information, see 
+          Using Model Registry.
+Experiments - Experiments v2 is now GA. The Experiments feature now integrates
+          with MLflow for managing the model lifecycle. For more information, see 
+          Experiments.
+Service Accounts - Service Accounts, which allow automated processes to run with
+          their own user account, is now GA. For more information, see 
+          Service Accounts.
+Usage log tracking - Usage log records all workloads: sessions, jobs, models,
+          applications and distributed compute, enabling administrators to export and analyze
+          workload statistics on-demand.
+Kubernetes - Kubernetes 1.25 is now supported for EKS.
+Azure - New Azure instance types are supported: D4asv4,
+          D16asv5 and D8asv5.
+Azure - On new installations, the nfs-csi-driver is now enabled.
+Azure - Cross-environment backup and restore of workspaces is now supported.
+Applications - Users can now see pod logs for applications. In
+          Application Details, go to the Container
+            Logs tab, and the pod logs are shown. Application and pod logs can be
+          downloaded from the respective pages. 
+Runtime Addons - CML now includes HadoopCLI Runtime Addon 7.2.15, and 
+          HadoopCLI 7.2.14 Runtime Addon is removed.
+
+
+Fixed Issues
+
+DSE-30784 - Added more logging and event logging in Resume Workflow
+DSE-20734 - Fixed an issue where a machine user was shown as Unknown in events
+          and log pages.
+DSE-30229 - Fixed an issue that caused CML upgrades to fail on AWS.
+DSE-29365 - Fixed an issue where the YQ version checker script was not working
+          for latest versions of yq in the CML application.
+DSE-28187 - Fixed an issue so that Retry Workspace Installation is disabled if
+          Liftie Provisioning fails.
+DSE-27000 - Upgraded cdp-js to version 4.2.5 in the CML application.
+DSE-26069 - Fixed an issue so that deleted and failed Spark addons do not appear
+          as selectable addons in the New or Modify Workload pages.
+DSE-26966 - Added Datalake preflight checks to the upgrade API.
+
+
+
+Parent topic: Older releases

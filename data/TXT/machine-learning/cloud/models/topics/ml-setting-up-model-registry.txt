@@ -1,0 +1,14 @@
+Setting up Model RegistryCloudera Docs
+Setting up Model Registry
+The Model Registry is the core enabler for MLOps, or DevOps for machine
+    learning.
+Prerequisites
+
+
+You must have permission to access a project in which the model is created before you
+            can register it.
+
+
+
+
+Creating a Model RegistryBefore you can start using Model Registry you must create a model registry for your   environment. Creating a Model Registry on an Azure UDR Private ClusterUse the following template CDP CLI command to create a UDR private cluster on Azure with   a Model Registry.Setting up access for Model Registry in a RAZ-enabled environmentIn a RAZ-enabled environment you need to set up the S3-Ranger policy by manually adding   the machine user name in the S3 Ranger policy.Setting up access for Model Registry in a non-RAZ-enabled environmentIn a non-RAZ-enabled environment you need to add the Machine User CRN to the IDBroker   mapping in order to access the S3/ADLS buckets.Synchronizing the model registry with a workspace If you deploy a model registry in an environment that contains one or more CML   workspaces, you must synchronize the model registry with the workspaces.Viewing Details for Model Registry You can view the information for your registered models using Model         Registry.Model Registry permissionsModel registry permissions for the following actions are separate from workspace   permissions, but they are inherited from environment level workspace permissions.Model access controlAccess to models is dependent on the user permissions, as described here.Deleting Model Registry If you no longer want to access Model Registry, you can delete it.Parent topic: Using Model Registry

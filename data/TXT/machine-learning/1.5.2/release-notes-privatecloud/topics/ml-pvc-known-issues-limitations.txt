@@ -1,0 +1,49 @@
+Known IssuesCloudera Docs
+Known Issues
+You might run into some known issues while using Cloudera Machine Learning on Private
+    Cloud.
+ENGSEC-22794: CML Sessions fail randomly with status 34
+CML Sessions fail randomly with status 34 for fresh CML PVC 1.5.2 workspace installs with
+        Base cluster timezone set to a non-UTC timezone.
+Workaround: Edit the CML workspace web deployment to force the timezone to UTC:
+kubectl edit deployments web -n mlx 
+
+- command:
+        - /usr/bin/bash
+        - -c
+        - TZ=UTC /home/cdswint/services/web/pod-bootstrap.sh 2>&1 | tee /var/fluentbit/log/web.log
+
+Note the TZ=UTC before pod-bootstrap.sh command
+
+OPSX-4603: Buildkit in ECS in CML PrivateCloud
+Issue: This release introduces BuildKit in ECS for building images
+        of models and experiments. BuildKit is a replacement for Docker, which was previously used
+        to build images of CML's models and experiments in ECS. Buildkit will be only for OS RHEL8.x
+        and CentOS 8.x.
+Buildkit in CML Private Cloud 1.5.2 is a Tech Preview feature. Hence, having Docker
+        installed on the nodes/hosts is still mandatory for models and experiments to work smoothly.
+        Upcoming release will be completely eliminating the dependency of Docker on the nodes.
+Workaround: None.
+
+DSE-32285: Migration: Migrated models are failing due to image pull
+        errors
+Issue: After CDSW to CML migration (on-premises) via full-fledged migration tool,
+        migrated models on CML Private Cloud Workspace fails on initial deployment. This is because
+        the initial model deployment tries to pull images from on-premises's registry.
+Workaround: Re-deploy the migrated model. As this involves the build and deploy
+        process, the image will be built, pushed to the CML Private Cloud Workspace's configured
+        registry, and then the same image will be consumed for further usage.
+
+DSE-28768: Spark Pushdown is not working with Scala 2.11 runtime
+Issue: Scala and R are not supported for Spark Pushdown.
+Workaround: None.
+
+DSE-32304 On CML Private Cloud ECS terminal and ssh connections can terminate
+Issue: In Private Cloud ECS, CML Terminal and SSH connections can terminate after an
+        uncertain amount of time, usually after 4-10 minutes. This issue affects customers using
+        local IDEs to work with CML, as well as any customer application using a websocket
+        connection.
+Workaround: None.
+
+
+Related informationKnown Issues and Limitations

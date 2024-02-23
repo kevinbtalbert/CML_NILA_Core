@@ -1,0 +1,28 @@
+Enable a private clusterCloudera Docs
+Enable a private cluster
+To enable a private cluster, select the option when provisioning the
+        workspace.
+
+In ML Workspaces, select Provision
+                        Workspace.
+
+Enter a Workspace Name, and select
+                        Environment.
+
+Select the Advanced Options toggle.
+
+In Network Settings, select Enable Fully
+                        Private Cluster.
+
+Make any other settings needed, and select Provision
+                        Workspace.
+
+
+
+
+
+
+The workspace is provisioned using a fully private cluster.
+
+
+Parent topic: Private cluster support

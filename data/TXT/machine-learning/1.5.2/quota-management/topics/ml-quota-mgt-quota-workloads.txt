@@ -1,0 +1,29 @@
+Quota for CML workloadsCloudera Docs
+Quota for CML workloads 
+An overview of quotas for CML workloads.
+
+In this release, the quota is implemented at user level.
+By default, 8 GB memory and 2 vCPU cores are configured for each user.
+The above resources will be sufficient for running simple sessions but nor the
+        spark workloads as the executors will not find additional resources.
+CML administrators can configure custom quota for the user under Site
+        Administration Page.
+
+
+
+
+If the quota for a user is exhausted, the workload remains in the pending state
+        till the required resources are available.
+If the quota for users is modified, it will be reflected when the next workload
+        is submitted.
+
+noteDo not toggle off this default quota once you have enabled the quota
+          management in CML.
+
+
+noteDo not edit the GPU resources on the user quota tab under site
+          administration when the workspace is provisioned without any GPU resources.
+
+GPU resources can be edited if the workspace is provisioned with GPU resources. 
+
+

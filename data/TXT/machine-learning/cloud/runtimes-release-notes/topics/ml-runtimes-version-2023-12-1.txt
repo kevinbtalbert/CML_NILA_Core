@@ -1,0 +1,37 @@
+ML Runtimes Version 2023.12.1Cloudera Docs
+ML Runtimes Version 2023.12.1
+Major features and updates for ML Runtimes.
+
+This release is available with ML Runtimes version 2023.12.1.
+noteNew ML Runtime releases are automatically added to the deployment, if
+    internet connection is available.
+New Runtimes
+
+Python 3.11 PBJ Standard Workbench
+Python 3.11 PBJ Nvidia GPU Workbench
+Python 3.11 JupyterLab Standard
+Python 3.11 JupyterLab Nvidia GPU
+
+notePython 3.11 Runtimes are not compatible with Spark
+    versions prior to Spark 3.4.
+Improvements
+
+Python maintenance versions - Python maintenance versions have been upgraded to
+     3.8.18, 3.9.18, and 3.10.13.
+
+Discontinued Runtimes
+The following runtimes are no longer included.
+
+R 3.6 PBJ
+R 4.0 PBJ
+R 4.1 PBJ
+R 3.6 Workbench
+R 4.0 Workbench
+R 4.1 Workbench
+
+Fixed Issue
+Workbench editor for Python 3.8 and 3.9 now can parse multiline strings properly.
+    (DSE-27222)
+
+
+Parent topic: ML Runtimes What's New

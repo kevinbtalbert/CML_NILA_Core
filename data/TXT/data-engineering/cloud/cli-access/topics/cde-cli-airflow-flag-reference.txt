@@ -1,0 +1,24 @@
+CDE CLI Airflow flag referenceCloudera Docs
+CDE CLI Airflow flag reference
+The Cloudera Data Engineering (CDE) command Airflow flag reference is shown
+    below.
+
+cde airflow submit --help
+Usage:
+  cde airflow submit [flags]
+
+Examples:
+For a local DAG file 'my-airflow-job.py':
+> cde airflow submit my-airflow-job.py
+
+Flags:
+      --airflow-file-mount-N-prefix string     mount directory prefix for airflow file mount N (defaults to "/airflow-file-mount-N-resource-name")
+      --airflow-file-mount-N-resource string   resource name for airflow file mount N
+      --config stringArray                     DEPRECATED - DAG configuration (format key=value) (can be repeated). Use --config-json option instead.
+      --config-json string                     DAG configuration in JSON string format
+      --config-json-file string                DAG configuration file location in JSON format
+      --dag-file string                        DAG filename, path to the DAG within the resource
+  -h, --help                                   help for submit
+      --job-name string                        name of the generated job
+
+

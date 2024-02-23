@@ -1,0 +1,24 @@
+Managing heterogenous GPU nodesCloudera Docs
+Managing heterogenous GPU nodes
+If you have heterogeneous GPU nodes and want to run Spark jobs or sessions on a
+    specific GPU node, then the Kubernetes platform administrator must add the node labels and
+    taints. You can use the below commands to manage labels and taint the node.
+
+Add Node
+            Labelkubectl label nodes worker-node1 nvidia.com/gpu=a100
+Remove Node
+              Labelkubectl label nodes worker-node1 nvidia.com/gpu-If you
+              want to control running CPU workloads on GPU nodes, it is recommended to set node
+              taint.
+Add
+            Taintkubectl taint nodes worker-node1 nvidia.com/gpu=true:NoSchedule
+Remove
+            Taintkubectl taint nodes worker-node1 nvidia.com/gpu=true:NoSchedule-
+
+After you add label and taint to the nodes, data engineers can provide node selectors
+        and tolerations during the Spark job submission. For more information about adding node
+        lables and taints, see Node Labels and Taints and Tolerations.
+      For information about using labels and taints when creating CDE Jobs, see Creating jobs in
+      Cloudera Data Engineering.
+
+Related informationNode LabelsTaints and TolerationsCreating jobs in Cloudera Data EngineeringParent topic: Using GPUs in Cloudera Data Engineering (Technical Preview)

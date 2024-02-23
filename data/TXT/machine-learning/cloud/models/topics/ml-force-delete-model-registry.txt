@@ -1,0 +1,8 @@
+Force delete a model registryCloudera Docs
+Force delete a model registry
+
+If the model registry remains in the Model Registries list and cannot be deleted, you can force
+   delete the model registry with this CDP CLI command:
+   cdp ml delete-model-registry --model-registry-crn <MODEL REGISTRY CRN> --force
+
+Parent topic: Deleting Model Registry

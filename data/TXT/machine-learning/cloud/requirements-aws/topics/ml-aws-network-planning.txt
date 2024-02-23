@@ -1,0 +1,8 @@
+Network Planning for Cloudera Machine Learning on AWSCloudera Docs
+Network Planning for Cloudera Machine Learning on AWS
+Before attempting to deploy your AWS virtual network and set up your AWS Environment and
+  ML Workspaces, you should plan the network.
+Setting up CML for AWS is comprehensively convered in the Getting Started guide. See AWS
+    account requirements for more information.
+
+Related informationAWS account requirements

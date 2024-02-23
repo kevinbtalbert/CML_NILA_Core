@@ -1,0 +1,12 @@
+Querying data in an Iceberg tableCloudera Docs
+Querying data in an Iceberg table
+To read the Iceberg table, you can use SparkSQL to query the Iceberg tables. 
+Example:spark.sql("select * from ice_t").show(1000, false)importantWhen querying Iceberg tables in HDFS, CDS disables
+        locality by default. Because enabling locality generally leads to increased Spark planning
+        time for queries on such tables and often the increase is quite significant. If you wish to
+        enable locality, set the spark.cloudera.iceberg.locality.enabled to
+          true . For example, you can do it by passing --conf
+          spark.cloudera.iceberg.locality.enabled=true to your
+          spark3-submit command.
+
+Parent topic: Using Apache Iceberg in Cloudera Data Engineering

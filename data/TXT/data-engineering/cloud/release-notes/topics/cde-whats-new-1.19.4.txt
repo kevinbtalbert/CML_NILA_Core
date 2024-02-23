@@ -1,0 +1,41 @@
+December 11, 2023Cloudera Docs
+December 11, 2023
+This release (1.19.4) of the Cloudera Data Engineering (CDE) service on CDP Public Cloud
+  introduces the following changes.
+Kubernetes 1.26 support
+
+
+CDE now supports Kubernetes 1.26 for Azure and Amazon Web Services (AWS).
+You can upgrade to the Kubernetes 1.26 cluster through the CDE supported upgrade path.
+     
+
+
+
+Amazon Relational Database Service (Amazon RDS) at rest encryption with Customer Managed
+    Keys (CMK) (Technical Preview)
+CDE Service deployed on AWS using this CMK enabled environment, will start using CMK
+    based data at rest encryption for RDS. For more information, see Enable Customer Managed Keys on Amazon Web Services
+     (Preview).
+
+AWS Kubernetes secret encryption with Customer Managed Keys (CMK) (Technical
+    Preview)
+CDE Service deployed using this CMK enabled environment, will start using CMK based encryption
+    for Kubernetes secrets. For more information, see Enable Customer Managed Keys on Amazon Web Services
+     (Preview). 
+
+Amazon Elastic File System (AWS EFS) data at-rest encryption with Customer Managed Key
+    (CMK) (Technical Preview)
+Customer Managed Key is a feature supported by AWS that give customers ownership of their
+    encryption keys. For more information, see For more information, see Enable Customer Managed Keys on Amazon Web Services
+     (Preview).
+
+Amazon Elastic File System (AWS EFS) data in-transit encryption
+Support for data in-transit encryption through EFS CSI Driver. The EFS data read/write over
+    the wire are encrypted by TLS.
+
+Amazon Elastic File System (AWS EFS) Anonymous Access restriction
+This feature includes security hardening by preventing anonymous user or machines from
+    accessing EFS and its access points.
+
+
+Parent topic: What's new in Cloudera Data Engineering Public Cloud?

@@ -1,0 +1,72 @@
+Adding ML Runtimes using Runtime Repo filesCloudera Docs
+Adding ML Runtimes using Runtime Repo files
+
+Runtime Repo files are JSON files that contain all the details of ML Runtimes that are needed
+   by CML to add these ML Runtimes to the Runtime Catalog. When these files are hosted on URLs
+   accessible to CML, these URLs can be registered in CML. If Runtime updates are enabled in CML, ML
+   Runtimes that appear in the Runtime Repo files will be automatically added to the Runtime Catalog
+   within 24 hours. Using Runtime Repo files, both Custom and Cloudera provided Runtimes can be
+   added to CML workspaces.
+To add, edit, or remove Runtime Repo files
+
+Log in as administrator.
+Navigate to Site Administration > Runtime.
+Add, edit or delete Runtime Repo files in the Runtime Updates section.
+
+Cloudera provided Runtime Repo files
+CML hosts two public Runtime Repo files that contain the details of the
+    latest released ML Runtimes and Data Visualization Runtimes. 
+Name: Cloudera ML Runtimes
+URL:
+        https://archive.cloudera.com/ml-runtimes/latest/artifacts/repo-assembly.json
+Name: Cloudera DataViz Runtimes
+URL:
+       https://archive.cloudera.com/cdv/latest/artifacts/repo-assembly.json
+
+These Runtime Repo files are not added to CML Private Cloud clusters by
+    default. However, if your cluster is not air gapped, you can add these Runtime Repo files to
+    your CML workspace to keep your Runtime Catalog automatically updated with the latest released
+    Cloudera Runtimes. Note, that these Runtimes will be added to your Runtime Catalog from Cloudera
+    hosted registries, even if your Private Cloud is configured to use a different docker registry. 
+If your cluster is air-gapped, you can still add new Cloudera-built ML
+    Runtimes to your CML workspace by pushing these Runtimes into a docker registry that is hosted
+    within your air-gapped environment, and then adding a Runtime Repo file to CML. The
+    image_identifier fields in the file must point to the self-hosted docker registry instead of any
+    Cloudera-hosted registries. 
+
+Self created Runtime Repo files
+You can create your own Runtime Repo files and register them in CML. CML checks these Runtime
+    Repo files for changes every 24 hours and adds any new ML Runtimes found in these files
+    automatically to the Runtime Catalog.
+To create a Repo assembly file:
+
+Create a JSON file with the same structure as the Cloudera provided one:
+     {
+    "assembly_metadata_version": 1,
+    "runtimes": [
+         { 
+           "image_identifier": string,
+            "runtime_metadata_version": int,
+            "editor": string,
+            "edition": string,
+            "description": string,
+            "kernel": string,
+            "full_version": string,
+            "short_version": string,
+            "maintenance_version": int,
+            "git_hash": string,
+            "gbn": int
+         } , 
+    ]
+}
+Fill in the details of one or more ML Runtimes. If you are adding Cloudera-created Runtimes,
+     use the values from the Cloudera-provided Runtime Repo files. For Custom Runtimes,
+      git_hash should be an empty string, and gbn should be set to
+     zero. All other fields should be filled according to the information in Metadata for
+      Custom ML Runtimes.
+Host the JSON file on an URL that CML is able to access.
+Add the Runtime Repo file to CML on the Site Administration > Runtime page.
+
+
+
+Related informationMetadata for Custom ML RuntimesParent topic: Managing ML Runtimes

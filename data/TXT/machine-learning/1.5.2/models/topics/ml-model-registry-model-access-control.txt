@@ -1,0 +1,12 @@
+Model access controlCloudera Docs
+Model access control
+Access to models is dependent on the user permissions, as described here.
+
+Only Administrators are able to see all models, including those not created by them.
+A users who is an Owner of a given model can set the public or private visibility of the
+    model through the Model Registry UI.
+When a user registers a new model, that user is the Owner, and no other user has access.
+A user can make a model Public, and then all users receive Viewer access to the model by default.
+
+
+Parent topic: Setting up Model Registry

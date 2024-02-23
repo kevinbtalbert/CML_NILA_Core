@@ -1,0 +1,56 @@
+Deploying a model from the Model Registry using APIv2Cloudera Docs
+Deploying a model from the Model Registry using APIv2
+You can use the API v2 to deploy registered models from the Model Registry as part of
+  your MLOps CI/CD pipeline.
+The following example code shows how to deploy a model from the Model Registry by using three
+            APIv2 calls: create a model, create a model build, and create a model deployment.
+            api_client = cmlapi.default_client()
+
+model_body = cmlapi.CreateModelRequest(
+  project_id=project_id,
+  name="foo",                               # replace this with the model name 
+  description="Foo", 
+  disable_authentication=True,
+  registered_model_id="xyo2-ohbr-w0n2-dx3s" # replace this with the registered model id
+)
+
+model = api_client.create_model(model_body, project_id)
+print(model)
+
+
+model_build_body = cmlapi.CreateModelBuildRequest(
+  project_id=project_id,
+  model_id=model.id,
+  kernel="python3",
+  runtime_identifier='docker.repository.cloudera.com/cloudera/cdsw/ml-runtime-pbj-workbench-python3.10-standard:2023.12.1-b8', # replace this with the runtime identifier
+  registered_model_version_id="ar0a-z7sd-pjgb-2fn2" # replace this with the registered model id
+)
+
+model_build = api_client.create_model_build(model_build_body, project_id, model.id)
+print(model_build)
+
+
+while model_build.status not in ["built", "build failed"]:
+    print("waiting for model to build...")
+    time.sleep(10)
+    model_build = api_client.get_model_build(project_id, model.id, model_build.id)
+if model_build.status == "build failed":
+    print("model build failed, see UI for more information")
+    sys.exit(1)
+print("model built successfully!")
+
+
+
+model_deployment_body = cmlapi.CreateModelDeploymentRequest(project_id=project_id, model_id=model.id, build_id=model_build.id, replicas = model_replicas)
+model_deployment = api_client.create_model_deployment(model_deployment_body, project_id, model.id, model_build.id)
+
+while model_deployment.status not in ["stopped", "failed", "deployed"]:
+    print("waiting for model to deploy...")
+    time.sleep(10)
+    model_deployment = api_client.get_model_deployment(project_id, model.id, model_build.id, model_deployment.id)
+if model_deployment.status != "deployed":
+    print("model deployment failed, see UI for more information")
+    sys.exit(1)
+print("model deployed successfully!")
+
+Parent topic: Deploying a model from the Model Registry page

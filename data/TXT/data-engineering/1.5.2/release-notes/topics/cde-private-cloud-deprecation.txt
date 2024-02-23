@@ -1,0 +1,30 @@
+Deprecation Notices for Airflow and Spark Python environments APIsCloudera Docs
+Deprecation Notices for Airflow and Spark Python environments APIs
+Certain features and functionality are deprecated in Aiflow Python environments and
+    Spark Python environments. You must review these API changes that will be deprecated and removed
+    in future releases.Deprecation notice for Airflow Python environment APIs (technical preview)
+Airflow Python environment (technical preview) is improved in CDE Private Cloud 1.5.2 and
+        offers a more maintainable and reliable user experience through a revamped API. The existing
+        resource-based approach is now deprecated and the new endpoints and new workflow should be
+        used.
+Deprecated endpoints/methods is available in the CDE API Docs.
+POST /admin/airflow/airflow-python-env is deprecated. This API exists
+            for compatibility reasons, use the /admin/airflow/env APIs group
+            instead, to activate an airflow python environment resource. 
+GET /admin/airflow/airflow-python-env/active is deprecated. This API
+            exists for compatibility reasons, use the /admin/airflow/env APIs group
+            instead to get the currently activated airflow python environment name. 
+For all /resources endpoint, the airflow-python-env
+            resource type is deprecated. 
+For all /resources endpoint,  the
+              pythonEnv.pyPiMirror is deprecated, use
+              pythonEnv.pipRepository.url instead.
+
+
+Deprecation Notice for Spark Python environment APIs
+For improved maintainability and extendable API, the following change is made in the CDE
+        Resource API:
+
+For all /resources endpoint, pythonEnv.pyPiMirror is
+          deprecated. You must use pythonEnv.pipRepository.url instead.
+

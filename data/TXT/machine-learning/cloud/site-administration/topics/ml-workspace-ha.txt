@@ -1,0 +1,59 @@
+Setting up CML Workspaces for High Volume WorkloadsCloudera Docs
+Setting up CML Workspaces for High Volume Workloads
+Autoscaling in CML enables seamless scaling up of clusters, accommodating sessions,
+    experiments, model metrics, jobs, and applications with increased user demand. In order to
+    ensure seamless functioning of CML workspaces with high volume workloads, core CML flows such as
+    workspace suspend, resume, backup, upgrade, and editing are validated with high volume
+    workloads. Additionally, clusters can be efficiently downsized by adjusting the autoscale range
+    in workloads without disrupting control plane capabilities.
+To prepare a CML workspace for high volume workloads, you need to perform the following steps
+      to modify the pod quota limit for the CML tenant, and then do the same for the CML
+      workspace.
+
+Go inside the workspace and create a project. 
+
+
+In Project settings, click the lock button. 
+
+
+In Advanced settings, add the key OVERRIDE_PODQUOTA and enter the value
+        for the new pod limit to set. 
+
+
+
+Verified flows and configurations
+
+Enhanced Pod Count Limit Scaling up to 250 Pods within a single user namespace is
+            verified, assuming that the workspace possesses sufficient computational resources and
+            storage capacity to accommodate these pods.
+Auto-Scaling Certification The Control Plane actions have been verified to scale up
+            to 100 Nodes.
+Suspension and resumption of 100 Nodes has been successfully tested.
+Workspace Management 
+Backup of Workspaces with up to 100 Nodes.
+Upscale and downscale of cluster nodes between 1-100 is now verified by changing the
+              worker node range within the edit section of workspace. 
+Successfully tested upgrading a 100 node Workspace from version at 'V-1'.
+
+Basic sanity testing of the following workload flows was conducted for Workspaces with
+          100 Nodes: 
+Creation of Sessions, Applications, Jobs, Model Metrics and Experiments for a user
+              after workspace creation and upgrading.
+Deletion of Sessions, Applications, Jobs, Model Metrics and Experiments for high
+              volume workloads.
+I/O, memory usage validation during upscale and downscale operations.
+
+
+
+Known issues
+There are a few known issues that have been identified during the certification process.
+        These issues are currently being addressed.
+
+During concurrent creation of sessions via CML workspace users, some pods may fail to
+          come up, with a ~3% failure rate.
+For high volume workspaces, CML workspace applications may fail to restart after
+          modify/resume and upgrade operations. In this case, manually restart the affected
+          application. 
+
+
+

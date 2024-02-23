@@ -1,0 +1,32 @@
+Creating a Model RegistryCloudera Docs
+Creating a Model Registry
+Before you can start using Model Registry you must create a model registry for your
+  environment. 
+
+From the Cloudera application, click Cloudera Machine
+     Learning.
+
+Click Model Registry in the left navigation pane.
+
+Choose your environment from the Environment Name drop down list.
+
+Depending on your environment, complete one of the following:
+
+
+If your environment is in AWS, Model Registry displays the following dialog box:
+
+Select your environment, and click Create to create the Model Registry.
+
+
+If your environment is in Azure, Model Registry displays the following dialog box:
+
+
+Enter your NFS directory in the Existing NFS field.
+Choose the NFS Protocol version.
+Click Create to create the Model Registry.
+
+
+
+
+
+Parent topic: Setting up Model Registry

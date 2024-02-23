@@ -1,75 +1,55 @@
+
+from langchain.document_loaders import UnstructuredPDFLoader, OnlinePDFLoader,PyPDFLoader, TextLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
+from langchain.vectorstores import Pinecone
+from langchain.embeddings.openai import OpenAIEmbeddings
 import os
-import subprocess
-import utils.model_embedding_utils as model_embedding
-from pathlib import Path
 import pinecone
-from sentence_transformers import SentenceTransformer
 
-VECTOR_DB = os.getenv('VECTOR_DB').upper()
-PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
-PINECONE_ENVIRONMENT = os.getenv('PINECONE_ENVIRONMENT')
-PINECONE_INDEX = os.getenv('PINECONE_INDEX')
-dimension = 1536
+# Initialize Pinecone and OpenAI API
+pinecone.init(
+    api_key=os.getenv("PINECONE_API_KEY"),
+    environment=os.getenv("PINECONE_ENVIRONMENT")
+)
+openai_api_key = os.getenv("OPENAI_API_KEY")
+index_name = os.getenv("PINECONE_INDEX")
 
-def create_pinecone_collection(PINECONE_INDEX):
-    try:
-        print(f"Creating 1536-dimensional index called '{PINECONE_INDEX}'...")
-        pinecone.create_index(PINECONE_INDEX, dimension=1536)
-        print("Success")
-    except:
-        # index already created, continue
-        pass
+embeddings = OpenAIEmbeddings(
+    openai_api_key=os.getenv("OPENAI_API_KEY")
+    # openai_api_base=OPENAI_API_BASE, 
+    # openai_api_type=OPENAI_API_TYPE, 
+    # openai_api_version=OPENAI_API_VERSION,
+    # chunk_size=1
+)
 
-    print("Checking Pinecone for active indexes...")
-    active_indexes = pinecone.list_indexes()
-    print("Active indexes:")
-    print(active_indexes)
-    print(f"Getting description for '{PINECONE_INDEX}'...")
-    index_description = pinecone.describe_index(PINECONE_INDEX)
-    print("Description:")
-    print(index_description)
-
-    print(f"Getting '{PINECONE_INDEX}' as object...")
-    pinecone_index = pinecone.Index(PINECONE_INDEX)
-    print("Success")
+# Check if the Pinecone index exists, if not, create it
+existing_indexes = pinecone.list_indexes()
+if index_name not in existing_indexes:
+    pinecone.create_index(index_name, dimension=1536, metric="cosine")
     
-    return pinecone_index
-    
-    
-# Create an embedding for given text/doc and insert it into Pinecone Vector DB
-def insert_embedding(pinecone_index, id_path, text):
-    print("Upserting vectors...")
-    vectors = list(zip([text[:512]], [model_embedding.get_embeddings(text)], [{"file_path": id_path}]))
-    upsert_response = pinecone_index.upsert(
-        vectors=vectors
-        )
-    print("Success")
-    
-    
-def main():
-    if os.getenv('VECTOR_DB').upper() == "PINECONE":
-        try:
-            print("initialising Pinecone connection...")
-            pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_ENVIRONMENT)
-            print("Pinecone initialised")
-            
-            collection = create_pinecone_collection(PINECONE_INDEX)
-            
-            # Same files are ignored (e.g. running process repetitively won't overwrite, just pick up new files)
-            print("Pinecone index is up and collection is created")
+# Initialize Pinecone index object
+index = pinecone.Index(index_name)
 
-            # Read KB documents in ./data directory and insert embeddings into Vector DB for each doc
-            doc_dir = '/home/cdsw/data/TXT'
-            for file in Path(doc_dir).glob(f'**/*.txt'):
-                with open(file, "r") as f: # Open file in read mode
-                    print("Generating embeddings for: %s" % file.name)
-                    text = f.read()
-                    insert_embedding(collection, os.path.abspath(file), text)
-            print('Finished loading Knowledge Base embeddings into Pinecone')
+# Define the path to your documents folder
+folder_path = '/home/cdsw/data/TXT'
 
-        except Exception as e:
-            raise (e)
+# List all PDF files in the folder
+def list_txt_files(folder_path):
+    txt_files = []
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith('.txt'):
+                txt_files.append(os.path.join(root, file))
+    return txt_files
 
+txt_files = list_txt_files(folder_path)
 
-if __name__ == "__main__":
-    main()
+for txt_file in txt_files:
+    print(txt_file)
+    loader = TextLoader(txt_file)
+    data = loader.load()
+    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+    texts = text_splitter.split_documents(data)
+    docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
+    print("Loaded TXT document " + txt_file + " successfully to Pinecone index " + index_name)
+    
